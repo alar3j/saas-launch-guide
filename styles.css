@@ -1114,12 +1114,13 @@ input:focus-visible + .check-ui {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  min-height: 292px;
   border: 1px solid var(--ink);
   background: var(--ink);
   color: #fff;
   text-decoration: none;
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .tool-card::before {
@@ -1138,16 +1139,61 @@ input:focus-visible + .check-ui {
 .tool-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 35px rgba(13, 13, 15, 0.18);
+  border-color: rgba(255, 90, 54, 0.72);
+}
+
+.tool-card:active {
+  transform: translateY(-1px) scale(0.99);
 }
 
 .tool-card:hover::before {
   transform: scale(1.15);
 }
 
-.tool-card > div,
-.tool-card > svg {
+.tool-card > * {
   position: relative;
   z-index: 1;
+}
+
+.tool-card-top,
+.tool-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.tool-logo {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.tool-logo img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.tool-official {
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tool-card-copy {
+  margin-block-start: 22px;
 }
 
 .tool-card .card-label {
@@ -1158,14 +1204,29 @@ input:focus-visible + .check-ui {
   color: rgba(255, 255, 255, 0.65);
 }
 
-.tool-card > svg {
-  width: 24px;
-  margin-block-start: 22px;
+.tool-cta {
+  min-height: 44px;
+  margin-block-start: auto;
+  padding-block-start: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tool-cta svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: transform 180ms ease;
+}
+
+.tool-card:hover .tool-cta svg {
+  transform: translate(-2px, -2px);
 }
 
 /* Final checklist */
@@ -1618,7 +1679,7 @@ footer {
   }
 
   .tool-card {
-    min-height: 210px;
+    min-height: 280px;
   }
 
   .final-inner {

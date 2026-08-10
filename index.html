@@ -3,398 +3,820 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="دليل عربي عملي لبناء منتج SaaS وإطلاقه في سبع مراحل واضحة." />
-    <meta name="theme-color" content="#f7f7f5" />
-    <meta name="color-scheme" content="light" />
-    <meta property="og:title" content="أطلقها — دليل بناء SaaS" />
-    <meta property="og:description" content="من الفكرة إلى أول مستخدم: سبع مراحل عملية، أدوات واضحة، وقائمة إطلاق تحفظ تقدّمك." />
-    <title>أطلقها — دليل بناء SaaS</title>
+    <meta name="description" content="دليل عربي تفاعلي لبناء منتج SaaS وإطلاقه: سبع مراحل، إحدى وعشرون أداة، بحث فوري، وقائمة إطلاق تحفظ تقدّمك." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#FAFAFC" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B0B14" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:title" content="أطلقها ٢.٠ — دليل بناء SaaS" />
+    <meta property="og:description" content="من الفكرة إلى أول مستخدم: سبع مراحل، ٢١ أداة مختارة، وبحث فوري يوصلك للمعلومة في ثانية." />
+    <title>أطلقها ٢٫٠ — دليل بناء SaaS</title>
 
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dawod/thmanyah-font-web@1.2.0/index.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" />
     <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      // Applied before first paint so the saved theme and mode never flash.
+      (function () {
+        try {
+          var theme = localStorage.getItem("atlqiha-v2-theme");
+          if (theme === "dark" || theme === "light") {
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+          if (localStorage.getItem("atlqiha-v2-mode") === "quick") {
+            document.documentElement.classList.add("mode-quick");
+          }
+        } catch (error) {
+          // Storage can be blocked; the page keeps its default appearance.
+        }
+      })();
+    </script>
   </head>
 
   <body>
     <a class="skip-link" href="#guide">تجاوز إلى محتوى الدليل</a>
 
+    <div class="aurora" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
+      <span class="blob blob-4"></span>
+      <span class="grain"></span>
+    </div>
+
     <header class="site-header" id="top">
       <div class="header-inner">
         <a class="brand" href="#top" aria-label="أطلقها، العودة إلى البداية">
-          <span class="brand-symbol" aria-hidden="true">
-            <svg viewBox="0 0 32 32"><path d="M16 3v8M4.8 9.4l6.9 4M27.2 9.4l-6.9 4M5 22.5h22" /></svg>
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M16 3c4.4 4 6.6 8.2 6.6 12.6 0 3-1 5.8-3 8.4h-7.2c-2-2.6-3-5.4-3-8.4C9.4 11.2 11.6 7 16 3Z" /><path d="M12.4 24 9 29l4.6-1.4M19.6 24 23 29l-4.6-1.4" /><circle cx="16" cy="14" r="2.4" /></svg>
           </span>
-          <span class="brand-name">أطلقها<span>.</span></span>
+          <span class="brand-name">أطلِقها<em>٢٫٠</em></span>
         </a>
 
         <nav class="header-nav" aria-label="التنقل الرئيسي">
           <a href="#roadmap">المسار</a>
+          <a href="#guide">المراحل</a>
+          <a href="#stack">الستاك</a>
           <a href="#final-check">قائمة الإطلاق</a>
-          <a href="v2/">✦ النسخة ٢٫٠</a>
         </nav>
 
-        <div class="header-progress" aria-label="نسبة إنجاز الدليل">
-          <span>تقدّمك</span>
-          <strong id="headerProgressText">٠ من ٧</strong>
+        <div class="header-tools">
+          <button class="icon-button search-trigger" id="searchTrigger" type="button" aria-label="ابحث في الدليل">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
+            <span class="search-trigger-text">ابحث</span>
+            <kbd aria-hidden="true">⌘K</kbd>
+          </button>
+
+          <button class="icon-button" id="themeToggle" type="button" aria-label="تبديل الوضع الداكن">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" /></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" /></svg>
+          </button>
+
+          <div class="header-ring" title="تقدّمك في الدليل">
+            <svg viewBox="0 0 44 44" aria-hidden="true">
+              <circle class="ring-track" cx="22" cy="22" r="18" />
+              <circle class="ring-value" id="headerRing" cx="22" cy="22" r="18" />
+            </svg>
+            <span id="headerRingText">٠</span>
+          </div>
         </div>
       </div>
     </header>
 
     <main>
+      <!-- ═══ Hero ═══ -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-inner">
-          <div class="hero-copy">
-            <p class="hero-badge">
-              <span aria-hidden="true"></span>
-              دليل عملي مجاني لبناء SaaS
-            </p>
-            <h1 id="hero-title">حوّل فكرتك إلى منتج <span>SaaS</span> يعمل.</h1>
-            <p class="hero-lead">سبع مراحل واضحة تنقلك من مشكلة حقيقية إلى رابط يفتحه أول مستخدم؛ بلا حشو، وبلا ضياع بين عشرات الأدوات.</p>
+          <p class="eyebrow">
+            <span class="pulse" aria-hidden="true"></span>
+            دليل عربي مجاني · مفتوح المصدر
+          </p>
 
-            <div class="hero-actions">
-              <a class="button button-primary" href="#stage-1">
-                <span>ابدأ من المرحلة الأولى</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-              <a class="button button-secondary" href="#roadmap">شاهد المسار كاملًا</a>
-            </div>
+          <h1 id="hero-title">
+            من فكرة في رأسك
+            <span class="gradient-text">إلى منتج SaaS يعمل</span>
+            <span class="hero-tail">في سبع مراحل، لا أكثر.</span>
+          </h1>
 
-            <dl class="hero-stats" aria-label="معلومات الدليل">
-              <div><dt>المراحل</dt><dd>٧</dd></div>
-              <div><dt>وقت القراءة</dt><dd>١٠ دقائق</dd></div>
-              <div><dt>حفظ التقدّم</dt><dd>تلقائي</dd></div>
-            </dl>
+          <p class="hero-lead">
+            كل مرحلة تعطيك قرارًا واحدًا واضحًا، فخًّا تتجنّبه، إجراءً تنفّذه اليوم، وثلاث أدوات مجرّبة تختار منها.
+            بلا حشو، وبلا ضياع بين عشرات الخيارات.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#stage-1">
+              <span>ابدأ من المرحلة الأولى</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+            </a>
+            <a class="btn btn-ghost" href="#stack">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3ZM3 12.2l9 4.5 9-4.5M3 16.7l9 4.5 9-4.5" /></svg>
+              <span>شاهد الستاك كاملًا</span>
+            </a>
           </div>
 
-          <div class="hero-visual" aria-label="النتيجة النهائية للدليل">
-            <div class="visual-topline">
-              <span>من الفكرة إلى الإطلاق</span>
-              <span class="status-dot">مسار عملي</span>
-            </div>
-
-            <div class="visual-number" aria-hidden="true">٠١ — ٠٧</div>
-            <h2>في النهاية سيكون لديك منتج صغير، واضح، وجاهز للاختبار.</h2>
-
-            <ul class="visual-list">
-              <li><span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>مشكلة مؤكدة من مستخدمين حقيقيين</li>
-              <li><span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>نسخة أولى تنجز وعدًا واحدًا</li>
-              <li><span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>خطة واضحة لأول عشرة مستخدمين</li>
-            </ul>
-
-            <div class="visual-footer">
-              <span>القاعدة الوحيدة</span>
-              <strong>نفّذ مرحلة واحدة في كل مرة.</strong>
-            </div>
-          </div>
+          <dl class="hero-stats" aria-label="أرقام الدليل">
+            <div><dt>مراحل عملية</dt><dd>٧</dd></div>
+            <div><dt>أداة مختارة</dt><dd>٢١</dd></div>
+            <div><dt>دقيقة قراءة</dt><dd>١٢</dd></div>
+            <div><dt>حفظ التقدّم</dt><dd>تلقائي</dd></div>
+          </dl>
         </div>
       </section>
 
+      <!-- ═══ Roadmap ═══ -->
       <section class="roadmap" id="roadmap" aria-labelledby="roadmap-title">
-        <div class="section-heading">
+        <div class="section-head">
           <p class="section-label">المسار في نظرة واحدة</p>
-          <h2 id="roadmap-title">سبع مراحل. قرار واضح في كل مرحلة.</h2>
-          <p>ابدأ من الصفر، أو انتقل مباشرة إلى المرحلة التي يعمل عليها مشروعك الآن.</p>
+          <h2 id="roadmap-title">سبع مراحل. لكل واحدة لونها وسؤالها.</h2>
+          <p class="section-sub">ابدأ من الصفر، أو اقفز مباشرة إلى المرحلة التي يقف عندها مشروعك الآن.</p>
         </div>
 
         <nav class="roadmap-grid" aria-label="مراحل بناء المنتج">
-          <a href="#stage-1"><span>٠١</span><strong>الفكرة والتحقق</strong><small>هل المشكلة حقيقية؟</small></a>
-          <a href="#stage-2"><span>٠٢</span><strong>التصميم</strong><small>ما أقصر طريق للقيمة؟</small></a>
-          <a href="#stage-3"><span>٠٣</span><strong>البناء</strong><small>ما أصغر نسخة مفيدة؟</small></a>
-          <a href="#stage-4"><span>٠٤</span><strong>الدفع</strong><small>هل العرض واضح؟</small></a>
-          <a href="#stage-5"><span>٠٥</span><strong>التشغيل</strong><small>هل التجربة موثوقة؟</small></a>
-          <a href="#stage-6"><span>٠٦</span><strong>القياس</strong><small>ما الإشارة المهمة؟</small></a>
-          <a href="#stage-7"><span>٠٧</span><strong>الإطلاق</strong><small>من أول مستخدم؟</small></a>
+          <a href="#stage-1" data-stage-card="1" style="--hue: var(--s1)">
+            <span class="rc-num">٠١</span>
+            <strong>الفكرة والتحقق</strong>
+            <small>هل المشكلة حقيقية أصلًا؟</small>
+            <span class="rc-state" aria-hidden="true"></span>
+          </a>
+          <a href="#stage-2" data-stage-card="2" style="--hue: var(--s2)">
+            <span class="rc-num">٠٢</span>
+            <strong>التصميم</strong>
+            <small>ما أقصر طريق إلى القيمة؟</small>
+            <span class="rc-state" aria-hidden="true"></span>
+          </a>
+          <a href="#stage-3" data-stage-card="3" style="--hue: var(--s3)">
+            <span class="rc-num">٠٣</span>
+            <strong>البناء</strong>
+            <small>ما أصغر نسخة مفيدة فعلًا؟</small>
+            <span class="rc-state" aria-hidden="true"></span>
+          </a>
+          <a href="#stage-4" data-stage-card="4" style="--hue: var(--s4)">
+            <span class="rc-num">٠٤</span>
+            <strong>الدفع والتسعير</strong>
+            <small>هل العرض واضح ومفهوم؟</small>
+            <span class="rc-state" aria-hidden="true"></span>
+          </a>
+          <a href="#stage-5" data-stage-card="5" style="--hue: var(--s5)">
+            <span class="rc-num">٠٥</span>
+            <strong>التشغيل والتواصل</strong>
+            <small>هل التجربة تبدو موثوقة؟</small>
+            <span class="rc-state" aria-hidden="true"></span>
+          </a>
+          <a href="#stage-6" data-stage-card="6" style="--hue: var(--s6)">
+            <span class="rc-num">٠٦</span>
+            <strong>القياس</strong>
+            <small>ما الإشارة الوحيدة المهمة؟</small>
+            <span class="rc-state" aria-hidden="true"></span>
+          </a>
+          <a href="#stage-7" data-stage-card="7" style="--hue: var(--s7)">
+            <span class="rc-num">٠٧</span>
+            <strong>النشر والإطلاق</strong>
+            <small>من هم أول عشرة مستخدمين؟</small>
+            <span class="rc-state" aria-hidden="true"></span>
+          </a>
         </nav>
       </section>
 
+      <!-- ═══ Guide ═══ -->
       <div class="guide-layout" id="guide">
         <aside class="guide-sidebar" aria-label="فهرس الدليل والتقدم">
-          <div class="progress-panel">
-            <div class="progress-copy">
-              <span>أنجزت</span>
-              <strong id="progressText">٠ من ٧</strong>
+          <div class="sidebar-inner">
+            <div class="progress-card">
+              <div class="progress-ring">
+                <svg viewBox="0 0 88 88" aria-hidden="true">
+                  <circle class="ring-track" cx="44" cy="44" r="38" />
+                  <circle class="ring-value" id="mainRing" cx="44" cy="44" r="38" />
+                </svg>
+                <div class="ring-label">
+                  <strong id="progressCount">٠</strong>
+                  <span>من ٧</span>
+                </div>
+              </div>
+              <p class="progress-note" id="progressNote">علّم كل مرحلة عند إنهائها — يُحفظ التقدّم في متصفحك وحده.</p>
             </div>
-            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" aria-label="تقدمك في الدليل">
-              <span id="progressBar"></span>
+
+            <div class="mode-switch" role="group" aria-label="طريقة عرض الدليل">
+              <button type="button" data-mode="full" aria-pressed="true">تفصيلي</button>
+              <button type="button" data-mode="quick" aria-pressed="false">مسار سريع</button>
             </div>
+
+            <nav class="chapter-nav" aria-label="فصول الدليل">
+              <a href="#stage-1" data-stage-link="1" style="--hue: var(--s1)"><small>٠١</small><span>الفكرة والتحقق</span></a>
+              <a href="#stage-2" data-stage-link="2" style="--hue: var(--s2)"><small>٠٢</small><span>التصميم</span></a>
+              <a href="#stage-3" data-stage-link="3" style="--hue: var(--s3)"><small>٠٣</small><span>البناء</span></a>
+              <a href="#stage-4" data-stage-link="4" style="--hue: var(--s4)"><small>٠٤</small><span>الدفع والتسعير</span></a>
+              <a href="#stage-5" data-stage-link="5" style="--hue: var(--s5)"><small>٠٥</small><span>التشغيل والتواصل</span></a>
+              <a href="#stage-6" data-stage-link="6" style="--hue: var(--s6)"><small>٠٦</small><span>القياس</span></a>
+              <a href="#stage-7" data-stage-link="7" style="--hue: var(--s7)"><small>٠٧</small><span>النشر والإطلاق</span></a>
+            </nav>
+
+            <button class="reset-button" id="resetProgress" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v6h6M20 20v-6h-6M5.5 15a7 7 0 0 0 11.5 2M18.5 9A7 7 0 0 0 7 7" /></svg>
+              <span>إعادة ضبط التقدّم</span>
+            </button>
           </div>
-
-          <nav class="chapter-nav" aria-label="فصول الدليل">
-            <a href="#stage-1" data-stage-link="1"><small>٠١</small><span>الفكرة والتحقق</span></a>
-            <a href="#stage-2" data-stage-link="2"><small>٠٢</small><span>التصميم</span></a>
-            <a href="#stage-3" data-stage-link="3"><small>٠٣</small><span>البناء</span></a>
-            <a href="#stage-4" data-stage-link="4"><small>٠٤</small><span>الدفع</span></a>
-            <a href="#stage-5" data-stage-link="5"><small>٠٥</small><span>التشغيل</span></a>
-            <a href="#stage-6" data-stage-link="6"><small>٠٦</small><span>القياس</span></a>
-            <a href="#stage-7" data-stage-link="7"><small>٠٧</small><span>الإطلاق</span></a>
-          </nav>
-
-          <button class="reset-button" id="resetProgress" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v6h6M20 20v-6h-6M5.5 15a7 7 0 0 0 11.5 2M18.5 9A7 7 0 0 0 7 7" /></svg>
-            <span>إعادة ضبط التقدّم</span>
-          </button>
         </aside>
 
         <div class="stages">
-          <article class="stage reveal" id="stage-1" data-stage="1" aria-labelledby="stage-1-title">
-            <header class="stage-heading">
-              <div class="stage-meta"><span>المرحلة ٠١</span><span>الفكرة والتحقق</span></div>
-              <h2 id="stage-1-title">تأكّد أن المشكلة تستحق الحل.</h2>
-              <p>لا تبدأ بالمنتج. ابدأ بموقف متكرر يكلّف شخصًا وقتًا أو مالًا أو أعصابًا، ثم افهم كيف يتعامل معه اليوم.</p>
-              <label class="complete-control">
+          <!-- ── Stage 1 ── -->
+          <article class="stage" id="stage-1" data-stage="1" style="--hue: var(--s1)" aria-labelledby="stage-1-title">
+            <header class="stage-head">
+              <span class="stage-num" aria-hidden="true">٠١</span>
+              <div class="stage-head-copy">
+                <p class="stage-kicker">المرحلة الأولى · الفكرة والتحقق</p>
+                <h2 id="stage-1-title">تأكّد أن المشكلة تستحق الحل.</h2>
+                <p class="stage-why">لا تبدأ بالمنتج. ابدأ بموقف متكرر يكلّف شخصًا وقتًا أو مالًا أو أعصابًا، ثم افهم كيف يتعامل معه اليوم — لأن بديله الحالي هو منافسك الحقيقي.</p>
+              </div>
+              <label class="done-toggle">
                 <input type="checkbox" data-check="1" />
-                <span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
-                <span>أكملت المرحلة</span>
+                <span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
+                <span class="done-text">أكملت المرحلة</span>
               </label>
             </header>
 
-            <div class="stage-details">
-              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>أن تسأل الناس: «هل ستستخدم فكرتي؟». الإجابات اللطيفة ليست دليلًا على وجود طلب.</p></div></aside>
+            <div class="stage-body">
+              <div class="callout callout-warn">
+                <span class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 2.6 20h18.8L12 4ZM12 10v4.4M12 17.2v.2" /></svg></span>
+                <div><strong>الفخ الشائع</strong><p>أن تسأل الناس: «هل ستستخدم فكرتي؟». الإجابات اللطيفة ليست دليلًا على وجود طلب — اسأل عن الماضي، لا عن المستقبل.</p></div>
+              </div>
 
-              <div class="stage-cards">
-                <section class="action-card">
-                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8v8M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg></div>
-                  <div>
-                    <p class="card-label">نفّذ الآن</p>
-                    <h3>أجرِ خمس محادثات قصيرة</h3>
-                    <p>اسأل كل شخص: متى واجهت المشكلة آخر مرة؟ ماذا فعلت؟ وما الجزء الأكثر إزعاجًا؟</p>
-                    <div class="outcome"><span>الناتج المطلوب</span><strong>جملة واحدة تصف ألمًا متكررًا.</strong></div>
-                  </div>
-                </section>
+              <section class="action-card">
+                <p class="card-label"><span aria-hidden="true">⚡</span> نفّذ الآن</p>
+                <h3>أجرِ خمس محادثات قصيرة</h3>
+                <p>اسأل كل شخص ثلاثة أسئلة فقط: متى واجهت المشكلة آخر مرة؟ ماذا فعلت وقتها بالضبط؟ ما الجزء الأكثر إزعاجًا؟ لا تشرح فكرتك قبل أن ينتهي من الإجابة.</p>
+                <div class="outcome"><span>الناتج المطلوب</span><strong>جملة واحدة تصف ألمًا متكررًا بكلمات صاحب المشكلة نفسه.</strong></div>
+              </section>
 
-                <a class="tool-card" href="https://www.notion.com/" target="_blank" rel="noopener noreferrer" aria-label="افتح Notion في تبويب جديد">
-                  <div class="tool-card-top">
-                    <span class="tool-logo" aria-hidden="true"><img src="https://cdn.simpleicons.org/notion" alt="" width="30" height="30" loading="lazy" decoding="async" /></span>
-                    <span class="tool-official">الموقع الرسمي</span>
-                  </div>
-                  <div class="tool-card-copy"><p class="card-label">الأداة المقترحة</p><h3>Notion</h3><p>اجمع المقابلات والملاحظات في صفحة واحدة بسيطة.</p></div>
-                  <span class="tool-cta"><span>افتح Notion</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg></span>
-                </a>
+              <div class="snippet">
+                <div class="snippet-head">
+                  <span>رسالة جاهزة لطلب مقابلة</span>
+                  <button class="copy-btn" type="button" data-copy="مرحبًا، أعمل على شيء يخص [المشكلة] وأحاول أن أفهمها قبل أن أبني أي شيء. هل تمنحني عشر دقائق لأسمع كيف تتعامل معها اليوم؟ لن أبيعك شيئًا — أريد أن أفهم فقط.">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2.5" /><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8" /></svg>
+                    <span>نسخ</span>
+                  </button>
+                </div>
+                <p>«مرحبًا، أعمل على شيء يخص <b>[المشكلة]</b> وأحاول أن أفهمها قبل أن أبني أي شيء. هل تمنحني عشر دقائق لأسمع كيف تتعامل معها اليوم؟ لن أبيعك شيئًا — أريد أن أفهم فقط.»</p>
+              </div>
+
+              <div class="tools">
+                <p class="tools-title">أدوات هذه المرحلة</p>
+                <div class="tools-row">
+                  <a class="tool" href="https://www.notion.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>N</b><img src="https://cdn.simpleicons.org/notion" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Notion</strong>
+                      <small>لتجميع كل المقابلات والملاحظات في صفحة واحدة تعود إليها.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://tally.so/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>T</b><img src="https://cdn.simpleicons.org/tally" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Tally</strong>
+                      <small>استمارة في دقيقتين لاختبار الاهتمام وجمع قائمة انتظار مبكرة.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://trends.google.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>G</b><img src="https://cdn.simpleicons.org/google" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Google Trends</strong>
+                      <small>تحقّق أن الناس يبحثون عن المشكلة فعلًا، وبأي كلمات.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-zero">مجاني</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                </div>
               </div>
             </div>
           </article>
 
-          <article class="stage reveal" id="stage-2" data-stage="2" aria-labelledby="stage-2-title">
-            <header class="stage-heading">
-              <div class="stage-meta"><span>المرحلة ٠٢</span><span>التصميم</span></div>
-              <h2 id="stage-2-title">ارسم أقصر طريق إلى القيمة.</h2>
-              <p>لا تصمّم عشرين شاشة. حدّد اللحظة التي يرى فيها المستخدم نتيجة مفيدة، ثم ابنِ الطريق الأقصر إليها.</p>
-              <label class="complete-control"><input type="checkbox" data-check="2" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+          <!-- ── Stage 2 ── -->
+          <article class="stage" id="stage-2" data-stage="2" style="--hue: var(--s2)" aria-labelledby="stage-2-title">
+            <header class="stage-head">
+              <span class="stage-num" aria-hidden="true">٠٢</span>
+              <div class="stage-head-copy">
+                <p class="stage-kicker">المرحلة الثانية · التصميم</p>
+                <h2 id="stage-2-title">ارسم أقصر طريق إلى القيمة.</h2>
+                <p class="stage-why">لا تصمّم عشرين شاشة. حدّد اللحظة التي يرى فيها المستخدم نتيجة مفيدة بيده، ثم احذف كل ما يقف بينه وبينها.</p>
+              </div>
+              <label class="done-toggle">
+                <input type="checkbox" data-check="2" />
+                <span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
+                <span class="done-text">أكملت المرحلة</span>
+              </label>
             </header>
 
-            <div class="stage-details">
-              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>إضاعة أسبوعين في الهوية والألوان قبل معرفة ما الذي سيضغطه المستخدم أصلًا.</p></div></aside>
+            <div class="stage-body">
+              <div class="callout callout-warn">
+                <span class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 2.6 20h18.8L12 4ZM12 10v4.4M12 17.2v.2" /></svg></span>
+                <div><strong>الفخ الشائع</strong><p>إضاعة أسبوعين في الهوية والألوان والشعار قبل معرفة ما الذي سيضغطه المستخدم أصلًا.</p></div>
+              </div>
 
-              <div class="mini-flow" aria-label="المسار الأساسي للمستخدم"><span>دخول</span><i></i><span>فعل واحد</span><i></i><span>نتيجة</span><i></i><strong>قيمة</strong></div>
+              <div class="flow" aria-label="المسار الأساسي للمستخدم">
+                <span>دخول</span><i aria-hidden="true"></i>
+                <span>فعل واحد</span><i aria-hidden="true"></i>
+                <span>نتيجة</span><i aria-hidden="true"></i>
+                <strong>قيمة</strong>
+              </div>
 
-              <div class="stage-cards">
-                <section class="action-card">
-                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19h16M7 16V8m5 8V5m5 11v-5" /></svg></div>
-                  <div><p class="card-label">نفّذ الآن</p><h3>ارسم التجربة في ثلاث شاشات</h3><p>بداية واضحة، فعل واحد، ثم نتيجة يستطيع المستخدم حفظها أو مشاركتها.</p><div class="outcome"><span>الناتج المطلوب</span><strong>مسار يمكن شرحه خلال دقيقة.</strong></div></div>
-                </section>
+              <section class="action-card">
+                <p class="card-label"><span aria-hidden="true">⚡</span> نفّذ الآن</p>
+                <h3>ارسم التجربة في ثلاث شاشات</h3>
+                <p>بداية واضحة تشرح الوعد، فعل واحد يقوم به المستخدم، ثم نتيجة يستطيع حفظها أو مشاركتها. أي شاشة رابعة تحتاج تبريرًا.</p>
+                <div class="outcome"><span>الناتج المطلوب</span><strong>مسار يمكنك شرحه لشخص غريب خلال دقيقة واحدة.</strong></div>
+              </section>
 
-                <a class="tool-card" href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" aria-label="افتح Figma في تبويب جديد">
-                  <div class="tool-card-top">
-                    <span class="tool-logo" aria-hidden="true"><img src="https://cdn.simpleicons.org/figma" alt="" width="30" height="30" loading="lazy" decoding="async" /></span>
-                    <span class="tool-official">الموقع الرسمي</span>
-                  </div>
-                  <div class="tool-card-copy"><p class="card-label">الأداة المقترحة</p><h3>Figma</h3><p>إطارات بسيطة ونظام ألوان وخط واحد يكفي في البداية.</p></div>
-                  <span class="tool-cta"><span>افتح Figma</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg></span>
-                </a>
+              <div class="tools">
+                <p class="tools-title">أدوات هذه المرحلة</p>
+                <div class="tools-row">
+                  <a class="tool" href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>F</b><img src="https://cdn.simpleicons.org/figma" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Figma</strong>
+                      <small>إطارات بسيطة ونظام لون وخط واحد — يكفي تمامًا في البداية.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>E</b><img src="https://cdn.simpleicons.org/excalidraw" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Excalidraw</strong>
+                      <small>أسرع طريقة لرسم المسار على شكل مخطط قبل أي تصميم دقيق.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-zero">مجاني</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://v0.app/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>v0</b><img src="https://cdn.simpleicons.org/v0" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>v0</strong>
+                      <small>حوّل وصفًا نصيًا إلى واجهة حقيقية قابلة للتجربة في دقائق.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                </div>
               </div>
             </div>
           </article>
 
-          <article class="stage reveal" id="stage-3" data-stage="3" aria-labelledby="stage-3-title">
-            <header class="stage-heading">
-              <div class="stage-meta"><span>المرحلة ٠٣</span><span>البناء</span></div>
-              <h2 id="stage-3-title">ابنِ أصغر نسخة مفيدة.</h2>
-              <p>نسختك الأولى لا تحتاج ميزات كثيرة. تحتاج وعدًا واحدًا تنجزه كاملًا، حتى لو كان جزء من العمل يدويًا خلف الكواليس.</p>
-              <label class="complete-control"><input type="checkbox" data-check="3" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+          <!-- ── Stage 3 ── -->
+          <article class="stage" id="stage-3" data-stage="3" style="--hue: var(--s3)" aria-labelledby="stage-3-title">
+            <header class="stage-head">
+              <span class="stage-num" aria-hidden="true">٠٣</span>
+              <div class="stage-head-copy">
+                <p class="stage-kicker">المرحلة الثالثة · البناء</p>
+                <h2 id="stage-3-title">ابنِ أصغر نسخة مفيدة.</h2>
+                <p class="stage-why">نسختك الأولى لا تحتاج ميزات كثيرة. تحتاج وعدًا واحدًا تنجزه كاملًا، حتى لو كان جزء من العمل يدويًا خلف الكواليس.</p>
+              </div>
+              <label class="done-toggle">
+                <input type="checkbox" data-check="3" />
+                <span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
+                <span class="done-text">أكملت المرحلة</span>
+              </label>
             </header>
 
-            <div class="stage-details">
-              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>بناء الصلاحيات والإعدادات ولوحات الإدارة قبل أن يستخدم المنتج شخص واحد.</p></div></aside>
+            <div class="stage-body">
+              <div class="callout callout-warn">
+                <span class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 2.6 20h18.8L12 4ZM12 10v4.4M12 17.2v.2" /></svg></span>
+                <div><strong>الفخ الشائع</strong><p>بناء الصلاحيات والإعدادات ولوحات الإدارة قبل أن يستخدم المنتج شخص واحد.</p></div>
+              </div>
 
-              <blockquote class="principle"><span>قاعدة النسخة ٠٫١</span><strong>مستخدم واحد + مشكلة واحدة + نتيجة واحدة</strong></blockquote>
+              <blockquote class="principle">
+                <span>قاعدة النسخة ٠٫١</span>
+                <strong>مستخدم واحد + مشكلة واحدة + نتيجة واحدة</strong>
+              </blockquote>
 
-              <div class="stage-cards">
-                <section class="action-card">
-                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14" /></svg></div>
-                  <div><p class="card-label">نفّذ الآن</p><h3>اكتب قائمة «لن نبنيها»</h3><p>اجمع عشر ميزات مغرية وجمّدها. أبقِ فقط ما يغيّر النتيجة الأساسية للمستخدم.</p><div class="outcome"><span>الناتج المطلوب</span><strong>نسخة تنجز وظيفة واحدة بإتقان.</strong></div></div>
-                </section>
+              <section class="action-card">
+                <p class="card-label"><span aria-hidden="true">⚡</span> نفّذ الآن</p>
+                <h3>اكتب قائمة «لن نبنيها»</h3>
+                <p>اجمع عشر ميزات مغرية وجمّدها كتابةً في مكان تراه كل يوم. أبقِ فقط ما يغيّر النتيجة الأساسية للمستخدم — الباقي يعود بعد أول عشرة مستخدمين.</p>
+                <div class="outcome"><span>الناتج المطلوب</span><strong>نسخة تنجز وظيفة واحدة بإتقان، لا عشر وظائف بنصف إتقان.</strong></div>
+              </section>
 
-                <a class="tool-card" href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener noreferrer" aria-label="افتح Claude Code في تبويب جديد">
-                  <div class="tool-card-top">
-                    <span class="tool-logo" aria-hidden="true"><img src="https://cdn.simpleicons.org/claude" alt="" width="30" height="30" loading="lazy" decoding="async" /></span>
-                    <span class="tool-official">الموقع الرسمي</span>
-                  </div>
-                  <div class="tool-card-copy"><p class="card-label">رفيق البناء</p><h3>Claude Code</h3><p>أعطه مواصفة قصيرة، وابنِ خطوة واحدة ثم اختبرها.</p></div>
-                  <span class="tool-cta"><span>افتح Claude Code</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg></span>
-                </a>
+              <div class="tools">
+                <p class="tools-title">أدوات هذه المرحلة</p>
+                <div class="tools-row">
+                  <a class="tool" href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>C</b><img src="https://cdn.simpleicons.org/claude" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Claude Code</strong>
+                      <small>أعطه مواصفة قصيرة، وابنِ خطوة واحدة ثم اختبرها قبل التالية.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-paid">مدفوع</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://supabase.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>S</b><img src="https://cdn.simpleicons.org/supabase" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Supabase</strong>
+                      <small>قاعدة بيانات وتسجيل دخول وتخزين جاهزة — بلا خادم تديره بنفسك.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://vercel.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>V</b><img src="https://cdn.simpleicons.org/vercel" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Vercel</strong>
+                      <small>ارفع كل تعديل تلقائيًا وشاركه برابط معاينة قبل النشر.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                </div>
               </div>
             </div>
           </article>
 
-          <article class="stage reveal" id="stage-4" data-stage="4" aria-labelledby="stage-4-title">
-            <header class="stage-heading">
-              <div class="stage-meta"><span>المرحلة ٠٤</span><span>الدفع</span></div>
-              <h2 id="stage-4-title">اجعل العرض والدفع واضحين.</h2>
-              <p>اختبر الاستعداد للدفع مبكرًا. قد تبدأ برابط أو طلب يدوي، لكن على العميل أن يفهم ما الذي يشتريه وكم سيدفع.</p>
-              <label class="complete-control"><input type="checkbox" data-check="4" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+          <!-- ── Stage 4 ── -->
+          <article class="stage" id="stage-4" data-stage="4" style="--hue: var(--s4)" aria-labelledby="stage-4-title">
+            <header class="stage-head">
+              <span class="stage-num" aria-hidden="true">٠٤</span>
+              <div class="stage-head-copy">
+                <p class="stage-kicker">المرحلة الرابعة · الدفع والتسعير</p>
+                <h2 id="stage-4-title">اجعل العرض والدفع واضحين.</h2>
+                <p class="stage-why">اختبر الاستعداد للدفع مبكرًا. قد تبدأ برابط أو طلب يدوي، لكن على العميل أن يفهم ما الذي يشتريه وكم سيدفع قبل أن يسأل.</p>
+              </div>
+              <label class="done-toggle">
+                <input type="checkbox" data-check="4" />
+                <span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
+                <span class="done-text">أكملت المرحلة</span>
+              </label>
             </header>
 
-            <div class="stage-details">
-              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>إخفاء السعر وطريقة الطلب بالكامل لأنك تخشى رفض السوق.</p></div></aside>
+            <div class="stage-body">
+              <div class="callout callout-warn">
+                <span class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 2.6 20h18.8L12 4ZM12 10v4.4M12 17.2v.2" /></svg></span>
+                <div><strong>الفخ الشائع</strong><p>إخفاء السعر وطريقة الطلب بالكامل لأنك تخشى رفض السوق — فتؤجّل الرفض بدل أن تتعلم منه.</p></div>
+              </div>
 
-              <div class="stage-cards">
-                <section class="action-card">
-                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h18v10H3zM7 12h3" /></svg></div>
-                  <div><p class="card-label">نفّذ الآن</p><h3>اكتب عرضك في سطرين</h3><p>«أساعد [فئة محددة] على [نتيجة واضحة] دون [العائق الرئيسي]». أضف بعدها سعرًا أو طريقة مباشرة لطلب التجربة.</p><div class="outcome"><span>اختبار الوضوح</span><strong>يفهمه شخص جديد خلال عشر ثوانٍ.</strong></div></div>
-                </section>
+              <section class="action-card">
+                <p class="card-label"><span aria-hidden="true">⚡</span> نفّذ الآن</p>
+                <h3>اكتب عرضك في سطرين</h3>
+                <p>«أساعد <b>[فئة محددة]</b> على <b>[نتيجة واضحة]</b> دون <b>[العائق الرئيسي]</b>». أضف بعدها سعرًا أو طريقة مباشرة لطلب التجربة — زر واحد، لا نموذج طويل.</p>
+                <div class="outcome"><span>اختبار الوضوح</span><strong>يفهمه شخص جديد خلال عشر ثوانٍ دون أن تشرح له.</strong></div>
+              </section>
 
-                <a class="tool-card" href="https://stripe.com/" target="_blank" rel="noopener noreferrer" aria-label="افتح Stripe في تبويب جديد">
-                  <div class="tool-card-top">
-                    <span class="tool-logo" aria-hidden="true"><img src="https://cdn.simpleicons.org/stripe" alt="" width="30" height="30" loading="lazy" decoding="async" /></span>
-                    <span class="tool-official">الموقع الرسمي</span>
-                  </div>
-                  <div class="tool-card-copy"><p class="card-label">للدفع العالمي</p><h3>Stripe</h3><p>تحقّق أولًا من دعم بلدك وسوقك قبل بدء التكامل.</p></div>
-                  <span class="tool-cta"><span>افتح Stripe</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg></span>
-                </a>
+              <div class="snippet">
+                <div class="snippet-head">
+                  <span>قالب العرض</span>
+                  <button class="copy-btn" type="button" data-copy="أساعد [فئة محددة] على [نتيجة واضحة] دون [العائق الرئيسي]. السعر: [الرقم] شهريًا، وتجربة أولى مجانية.">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2.5" /><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8" /></svg>
+                    <span>نسخ</span>
+                  </button>
+                </div>
+                <p>«أساعد <b>[فئة محددة]</b> على <b>[نتيجة واضحة]</b> دون <b>[العائق الرئيسي]</b>. السعر: <b>[الرقم]</b> شهريًا، وتجربة أولى مجانية.»</p>
+              </div>
+
+              <div class="tools">
+                <p class="tools-title">أدوات هذه المرحلة</p>
+                <div class="tools-row">
+                  <a class="tool" href="https://stripe.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>S</b><img src="https://cdn.simpleicons.org/stripe" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Stripe</strong>
+                      <small>المعيار العالمي للاشتراكات — تحقّق من دعم بلدك قبل بدء التكامل.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-paid">عمولة لكل عملية</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://www.paddle.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>P</b><img src="https://cdn.simpleicons.org/paddle" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Paddle</strong>
+                      <small>يتولّى الضرائب والفوترة نيابةً عنك كبائع مسجّل — أقل صداع قانوني.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-paid">عمولة لكل عملية</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://moyasar.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>م</b><img src="https://cdn.simpleicons.org/moyasar" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>ميسر · Moyasar</strong>
+                      <small>مدى وApple Pay وبطاقات محلية — الخيار العملي للسوق الخليجي.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-paid">عمولة لكل عملية</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                </div>
               </div>
             </div>
           </article>
 
-          <article class="stage reveal" id="stage-5" data-stage="5" aria-labelledby="stage-5-title">
-            <header class="stage-heading">
-              <div class="stage-meta"><span>المرحلة ٠٥</span><span>التشغيل والتواصل</span></div>
-              <h2 id="stage-5-title">جهّز التجربة قبل وصول المستخدم.</h2>
-              <p>رسالة الدخول، حالة الخطأ، وطريقة طلب المساعدة ليست تفاصيل ثانوية؛ هي ما يجعل المنتج يبدو موثوقًا.</p>
-              <label class="complete-control"><input type="checkbox" data-check="5" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+          <!-- ── Stage 5 ── -->
+          <article class="stage" id="stage-5" data-stage="5" style="--hue: var(--s5)" aria-labelledby="stage-5-title">
+            <header class="stage-head">
+              <span class="stage-num" aria-hidden="true">٠٥</span>
+              <div class="stage-head-copy">
+                <p class="stage-kicker">المرحلة الخامسة · التشغيل والتواصل</p>
+                <h2 id="stage-5-title">جهّز التجربة قبل وصول المستخدم.</h2>
+                <p class="stage-why">رسالة الدخول، حالة الخطأ، وطريقة طلب المساعدة ليست تفاصيل ثانوية؛ هي بالضبط ما يجعل منتجًا صغيرًا يبدو موثوقًا.</p>
+              </div>
+              <label class="done-toggle">
+                <input type="checkbox" data-check="5" />
+                <span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
+                <span class="done-text">أكملت المرحلة</span>
+              </label>
             </header>
 
-            <div class="stage-details">
-              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>اكتشاف يوم الإطلاق أن رسالة التسجيل لا تصل أو أن المستخدم لا يعرف ماذا يفعل بعدها.</p></div></aside>
+            <div class="stage-body">
+              <div class="callout callout-warn">
+                <span class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 2.6 20h18.8L12 4ZM12 10v4.4M12 17.2v.2" /></svg></span>
+                <div><strong>الفخ الشائع</strong><p>اكتشاف يوم الإطلاق أن رسالة التسجيل لا تصل، أو أن المستخدم لا يعرف ماذا يفعل بعد أن يدخل.</p></div>
+              </div>
 
-              <div class="stage-cards">
-                <section class="action-card">
-                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 7l8 6 8-6" /></svg></div>
-                  <div><p class="card-label">نفّذ الآن</p><h3>جرّب المنتج كمستخدم جديد</h3><p>افتحه من هاتفك، سجّل ببريد جديد، نفّذ المهمة الأساسية، ثم جرّب استرجاع الحساب وطلب المساعدة.</p><div class="outcome"><span>اختبر تحديدًا</span><strong>الترحيب، الخطأ، الدعم، والاسترجاع.</strong></div></div>
-                </section>
+              <section class="action-card">
+                <p class="card-label"><span aria-hidden="true">⚡</span> نفّذ الآن</p>
+                <h3>جرّب المنتج كمستخدم جديد تمامًا</h3>
+                <p>افتحه من هاتفك، سجّل ببريد جديد، نفّذ المهمة الأساسية، ثم جرّب استرجاع الحساب وطلب المساعدة. دوّن كل لحظة توقفت فيها للتفكير.</p>
+                <div class="outcome"><span>اختبر تحديدًا</span><strong>الترحيب · رسالة الخطأ · قناة الدعم · استرجاع كلمة المرور.</strong></div>
+              </section>
 
-                <a class="tool-card" href="https://resend.com/" target="_blank" rel="noopener noreferrer" aria-label="افتح Resend في تبويب جديد">
-                  <div class="tool-card-top">
-                    <span class="tool-logo" aria-hidden="true"><img src="https://cdn.simpleicons.org/resend" alt="" width="30" height="30" loading="lazy" decoding="async" /></span>
-                    <span class="tool-official">الموقع الرسمي</span>
-                  </div>
-                  <div class="tool-card-copy"><p class="card-label">للبريد التشغيلي</p><h3>Resend</h3><p>اختبر الإرسال من نطاقك ووصول الرسائل قبل الإعلان.</p></div>
-                  <span class="tool-cta"><span>افتح Resend</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg></span>
-                </a>
+              <div class="tools">
+                <p class="tools-title">أدوات هذه المرحلة</p>
+                <div class="tools-row">
+                  <a class="tool" href="https://resend.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>R</b><img src="https://cdn.simpleicons.org/resend" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Resend</strong>
+                      <small>البريد التشغيلي — اختبر الإرسال من نطاقك ووصول الرسائل قبل الإعلان.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://crisp.chat/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>C</b><img src="https://cdn.simpleicons.org/crisp" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Crisp</strong>
+                      <small>صندوق محادثة داخل المنتج — أسرع طريقة لسماع أول شكوى.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://sentry.io/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>S</b><img src="https://cdn.simpleicons.org/sentry" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Sentry</strong>
+                      <small>يخبرك بالخطأ قبل أن يخبرك المستخدم به — أو قبل أن يرحل بصمت.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                </div>
               </div>
             </div>
           </article>
 
-          <article class="stage reveal" id="stage-6" data-stage="6" aria-labelledby="stage-6-title">
-            <header class="stage-heading">
-              <div class="stage-meta"><span>المرحلة ٠٦</span><span>التحليلات والقياس</span></div>
-              <h2 id="stage-6-title">راقب إشارة واحدة صادقة.</h2>
-              <p>الزيارات وحدها لا تعني أن المنتج مفيد. اختر فعلًا واحدًا يدل أن المستخدم وصل إلى النتيجة التي وعدته بها.</p>
-              <label class="complete-control"><input type="checkbox" data-check="6" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+          <!-- ── Stage 6 ── -->
+          <article class="stage" id="stage-6" data-stage="6" style="--hue: var(--s6)" aria-labelledby="stage-6-title">
+            <header class="stage-head">
+              <span class="stage-num" aria-hidden="true">٠٦</span>
+              <div class="stage-head-copy">
+                <p class="stage-kicker">المرحلة السادسة · التحليلات والقياس</p>
+                <h2 id="stage-6-title">راقب إشارة واحدة صادقة.</h2>
+                <p class="stage-why">الزيارات وحدها لا تعني أن المنتج مفيد. اختر فعلًا واحدًا يدل على أن المستخدم وصل فعليًا إلى النتيجة التي وعدته بها.</p>
+              </div>
+              <label class="done-toggle">
+                <input type="checkbox" data-check="6" />
+                <span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
+                <span class="done-text">أكملت المرحلة</span>
+              </label>
             </header>
 
-            <div class="stage-details">
-              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>قياس عشرات الأحداث وصناعة لوحة ضخمة، ثم عدم اتخاذ قرار واحد منها.</p></div></aside>
+            <div class="stage-body">
+              <div class="callout callout-warn">
+                <span class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 2.6 20h18.8L12 4ZM12 10v4.4M12 17.2v.2" /></svg></span>
+                <div><strong>الفخ الشائع</strong><p>قياس عشرات الأحداث وصناعة لوحة ضخمة ملوّنة، ثم عدم اتخاذ قرار واحد بناءً عليها.</p></div>
+              </div>
 
-              <blockquote class="principle"><span>السؤال الأهم</span><strong>ما الفعل الذي إن تكرر أسبوعيًا سأعرف أن المنتج نافع؟</strong></blockquote>
+              <blockquote class="principle">
+                <span>السؤال الأهم</span>
+                <strong>ما الفعل الذي إن تكرر أسبوعيًا سأعرف أن المنتج نافع؟</strong>
+              </blockquote>
 
-              <div class="stage-cards">
-                <section class="action-card">
-                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8" /></svg></div>
-                  <div><p class="card-label">نفّذ الآن</p><h3>سمِّ حدث النجاح بصيغة فعل</h3><p>مثل: «أنشأ تقريرًا»، «أتمّ تصديرًا»، أو «دعا عضوًا». سجّله من النسخة الأولى وراجعه أسبوعيًا.</p><div class="outcome"><span>الناتج المطلوب</span><strong>رقم واحد يغيّر قراراتك.</strong></div></div>
-                </section>
+              <section class="action-card">
+                <p class="card-label"><span aria-hidden="true">⚡</span> نفّذ الآن</p>
+                <h3>سمِّ حدث النجاح بصيغة فعل</h3>
+                <p>مثل: «أنشأ تقريرًا»، «أتمّ تصديرًا»، أو «دعا عضوًا». سجّله من النسخة الأولى، وراجع رقمه كل أسبوع في نفس اليوم.</p>
+                <div class="outcome"><span>الناتج المطلوب</span><strong>رقم واحد تنظر إليه أسبوعيًا ويغيّر قراراتك فعلًا.</strong></div>
+              </section>
 
-                <a class="tool-card" href="https://posthog.com/" target="_blank" rel="noopener noreferrer" aria-label="افتح PostHog في تبويب جديد">
-                  <div class="tool-card-top">
-                    <span class="tool-logo" aria-hidden="true"><img src="https://cdn.simpleicons.org/posthog" alt="" width="30" height="30" loading="lazy" decoding="async" /></span>
-                    <span class="tool-official">الموقع الرسمي</span>
-                  </div>
-                  <div class="tool-card-copy"><p class="card-label">لفهم السلوك</p><h3>PostHog</h3><p>ابدأ بأحداث قليلة مرتبطة مباشرة بقيمة المنتج.</p></div>
-                  <span class="tool-cta"><span>افتح PostHog</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg></span>
-                </a>
+              <div class="tools">
+                <p class="tools-title">أدوات هذه المرحلة</p>
+                <div class="tools-row">
+                  <a class="tool" href="https://posthog.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>P</b><img src="https://cdn.simpleicons.org/posthog" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>PostHog</strong>
+                      <small>لفهم السلوك داخل المنتج — ابدأ بأحداث قليلة مرتبطة بالقيمة مباشرة.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-free">يبدأ مجانًا</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://plausible.io/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>P</b><img src="https://cdn.simpleicons.org/plausibleanalytics" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Plausible</strong>
+                      <small>إحصاءات زيارات خفيفة تحترم الخصوصية، بلوحة واحدة تُقرأ في ثانية.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-paid">مدفوع</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://umami.is/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>U</b><img src="https://cdn.simpleicons.org/umami" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Umami</strong>
+                      <small>بديل مفتوح المصدر يمكنك استضافته بنفسك بلا تكلفة شهرية.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-zero">مفتوح المصدر</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                </div>
               </div>
             </div>
           </article>
 
-          <article class="stage reveal" id="stage-7" data-stage="7" aria-labelledby="stage-7-title">
-            <header class="stage-heading">
-              <div class="stage-meta"><span>المرحلة ٠٧</span><span>النشر والإطلاق</span></div>
-              <h2 id="stage-7-title">أطلق إلى أول عشرة مستخدمين.</h2>
-              <p>الإطلاق ليس منشورًا ضخمًا. هو دعوة شخصية وواضحة لأشخاص تعرف أن المشكلة تؤلمهم الآن، ثم الاستماع لما يحدث.</p>
-              <label class="complete-control"><input type="checkbox" data-check="7" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+          <!-- ── Stage 7 ── -->
+          <article class="stage" id="stage-7" data-stage="7" style="--hue: var(--s7)" aria-labelledby="stage-7-title">
+            <header class="stage-head">
+              <span class="stage-num" aria-hidden="true">٠٧</span>
+              <div class="stage-head-copy">
+                <p class="stage-kicker">المرحلة السابعة · النشر والإطلاق</p>
+                <h2 id="stage-7-title">أطلق إلى أول عشرة مستخدمين.</h2>
+                <p class="stage-why">الإطلاق ليس منشورًا ضخمًا. هو دعوة شخصية وواضحة لأشخاص تعرف أن المشكلة تؤلمهم الآن، ثم الإنصات لما يحدث بعدها.</p>
+              </div>
+              <label class="done-toggle">
+                <input type="checkbox" data-check="7" />
+                <span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
+                <span class="done-text">أكملت المرحلة</span>
+              </label>
             </header>
 
-            <div class="stage-details">
-              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>تأجيل النشر كل أسبوع بحجة وجود تحسين أخير لا يغيّر النتيجة الأساسية.</p></div></aside>
+            <div class="stage-body">
+              <div class="callout callout-warn">
+                <span class="callout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 2.6 20h18.8L12 4ZM12 10v4.4M12 17.2v.2" /></svg></span>
+                <div><strong>الفخ الشائع</strong><p>تأجيل النشر كل أسبوع بحجة وجود تحسين أخير لا يغيّر النتيجة الأساسية بشيء.</p></div>
+              </div>
 
-              <div class="launch-template"><span>نص جاهز للتعديل</span><p>«بنيت أداة تساعد <b>[الفئة]</b> على <b>[النتيجة]</b>. أبحث عن خمسة أشخاص يجربونها ويخبرونني بصدق بما لا يعمل.»</p></div>
+              <div class="snippet">
+                <div class="snippet-head">
+                  <span>نص الدعوة الشخصية</span>
+                  <button class="copy-btn" type="button" data-copy="بنيت أداة تساعد [الفئة] على [النتيجة]. تذكّرتك لأنك ذكرت لي هذه المشكلة سابقًا. أبحث عن خمسة أشخاص يجربونها ويخبرونني بصدق بما لا يعمل — عشر دقائق تكفي.">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2.5" /><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8" /></svg>
+                    <span>نسخ</span>
+                  </button>
+                </div>
+                <p>«بنيت أداة تساعد <b>[الفئة]</b> على <b>[النتيجة]</b>. تذكّرتك لأنك ذكرت لي هذه المشكلة سابقًا. أبحث عن خمسة أشخاص يجربونها ويخبرونني بصدق بما لا يعمل — عشر دقائق تكفي.»</p>
+              </div>
 
-              <div class="stage-cards">
-                <section class="action-card">
-                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14 4 6 6-9 9H5v-6zM12 6l6 6" /></svg></div>
-                  <div><p class="card-label">نفّذ الآن</p><h3>أرسل عشر دعوات شخصية</h3><p>اشرح لكل شخص لماذا تواصلت معه تحديدًا، واطلب منه تجربة المهمة الأساسية ثم مكالمة قصيرة.</p><div class="outcome"><span>الهدف الأول</span><strong>تعلم حقيقي، لا انتشار واسع.</strong></div></div>
-                </section>
+              <section class="action-card">
+                <p class="card-label"><span aria-hidden="true">⚡</span> نفّذ الآن</p>
+                <h3>أرسل عشر دعوات شخصية</h3>
+                <p>اشرح لكل شخص لماذا تواصلت معه تحديدًا، واطلب منه تجربة المهمة الأساسية ثم مكالمة قصيرة. عشر رسائل مكتوبة يدويًا تتفوّق على ألف انطباع.</p>
+                <div class="outcome"><span>الهدف الأول</span><strong>تعلّم حقيقي من عشرة أشخاص، لا انتشار واسع بلا صدى.</strong></div>
+              </section>
 
-                <a class="tool-card" href="https://pages.github.com/" target="_blank" rel="noopener noreferrer" aria-label="افتح GitHub Pages في تبويب جديد">
-                  <div class="tool-card-top">
-                    <span class="tool-logo" aria-hidden="true"><img src="https://cdn.simpleicons.org/githubpages" alt="" width="30" height="30" loading="lazy" decoding="async" /></span>
-                    <span class="tool-official">الموقع الرسمي</span>
-                  </div>
-                  <div class="tool-card-copy"><p class="card-label">للنشر السريع</p><h3>GitHub Pages</h3><p>حوّل المستودع إلى رابط عام يمكن مشاركته خلال دقائق.</p></div>
-                  <span class="tool-cta"><span>افتح GitHub Pages</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg></span>
-                </a>
+              <div class="tools">
+                <p class="tools-title">أدوات هذه المرحلة</p>
+                <div class="tools-row">
+                  <a class="tool" href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>G</b><img src="https://cdn.simpleicons.org/githubpages" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>GitHub Pages</strong>
+                      <small>حوّل المستودع إلى رابط عام يمكن مشاركته خلال دقائق — كهذه الصفحة.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-zero">مجاني</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://www.producthunt.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>P</b><img src="https://cdn.simpleicons.org/producthunt" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>Product Hunt</strong>
+                      <small>للإطلاق العام بعد أن تثبت أن المنتج يعمل مع أول مستخدمين.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-zero">مجاني</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                  <a class="tool" href="https://x.com/" target="_blank" rel="noopener noreferrer">
+                    <span class="tool-logo" aria-hidden="true"><b>X</b><img src="https://cdn.simpleicons.org/x" alt="" width="26" height="26" loading="lazy" decoding="async" onerror="this.remove()" /></span>
+                    <span class="tool-body">
+                      <strong>X</strong>
+                      <small>اكتب رحلة البناء علنًا — القصة تجلب المستخدمين قبل الإعلان.</small>
+                    </span>
+                    <span class="tool-foot"><span class="price price-zero">مجاني</span><span class="tool-go" aria-hidden="true">↗</span></span>
+                  </a>
+                </div>
               </div>
             </div>
           </article>
         </div>
       </div>
 
-      <section class="final-check" id="final-check" aria-labelledby="final-title">
+      <!-- ═══ Stack ═══ -->
+      <section class="stack" id="stack" aria-labelledby="stack-title">
+        <div class="section-head">
+          <p class="section-label">مرجع سريع</p>
+          <h2 id="stack-title">الستاك الكامل — ٢١ أداة في مكان واحد.</h2>
+          <p class="section-sub">فلتر بالمرحلة أو بالتكلفة، أو ابحث بالاسم. كل بطاقة تفتح الموقع الرسمي مباشرة.</p>
+        </div>
+
+        <div class="stack-controls">
+          <div class="chips" role="group" aria-label="فلترة بالمرحلة">
+            <button type="button" class="chip is-on" data-filter-stage="all">كل المراحل</button>
+            <button type="button" class="chip" data-filter-stage="1" style="--hue: var(--s1)">٠١ الفكرة</button>
+            <button type="button" class="chip" data-filter-stage="2" style="--hue: var(--s2)">٠٢ التصميم</button>
+            <button type="button" class="chip" data-filter-stage="3" style="--hue: var(--s3)">٠٣ البناء</button>
+            <button type="button" class="chip" data-filter-stage="4" style="--hue: var(--s4)">٠٤ الدفع</button>
+            <button type="button" class="chip" data-filter-stage="5" style="--hue: var(--s5)">٠٥ التشغيل</button>
+            <button type="button" class="chip" data-filter-stage="6" style="--hue: var(--s6)">٠٦ القياس</button>
+            <button type="button" class="chip" data-filter-stage="7" style="--hue: var(--s7)">٠٧ الإطلاق</button>
+          </div>
+
+          <div class="chips chips-price" role="group" aria-label="فلترة بالتكلفة">
+            <button type="button" class="chip is-on" data-filter-price="all">كل التكاليف</button>
+            <button type="button" class="chip" data-filter-price="zero">مجاني</button>
+            <button type="button" class="chip" data-filter-price="free">يبدأ مجانًا</button>
+            <button type="button" class="chip" data-filter-price="paid">مدفوع</button>
+          </div>
+        </div>
+
+        <div class="stack-grid" id="stackGrid">
+          <a class="stack-item" href="https://www.notion.com/" target="_blank" rel="noopener noreferrer" data-stage="1" data-price="free" style="--hue: var(--s1)"><span class="si-logo" aria-hidden="true"><b>N</b><img src="https://cdn.simpleicons.org/notion" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Notion</span><span class="si-use">توثيق المقابلات والملاحظات</span><span class="si-tag">٠١ الفكرة</span></a>
+          <a class="stack-item" href="https://tally.so/" target="_blank" rel="noopener noreferrer" data-stage="1" data-price="free" style="--hue: var(--s1)"><span class="si-logo" aria-hidden="true"><b>T</b><img src="https://cdn.simpleicons.org/tally" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Tally</span><span class="si-use">استمارات وقوائم انتظار</span><span class="si-tag">٠١ الفكرة</span></a>
+          <a class="stack-item" href="https://trends.google.com/" target="_blank" rel="noopener noreferrer" data-stage="1" data-price="zero" style="--hue: var(--s1)"><span class="si-logo" aria-hidden="true"><b>G</b><img src="https://cdn.simpleicons.org/google" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Google Trends</span><span class="si-use">قياس اهتمام البحث</span><span class="si-tag">٠١ الفكرة</span></a>
+
+          <a class="stack-item" href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" data-stage="2" data-price="free" style="--hue: var(--s2)"><span class="si-logo" aria-hidden="true"><b>F</b><img src="https://cdn.simpleicons.org/figma" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Figma</span><span class="si-use">تصميم الواجهات</span><span class="si-tag">٠٢ التصميم</span></a>
+          <a class="stack-item" href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer" data-stage="2" data-price="zero" style="--hue: var(--s2)"><span class="si-logo" aria-hidden="true"><b>E</b><img src="https://cdn.simpleicons.org/excalidraw" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Excalidraw</span><span class="si-use">رسم المسارات والمخططات</span><span class="si-tag">٠٢ التصميم</span></a>
+          <a class="stack-item" href="https://v0.app/" target="_blank" rel="noopener noreferrer" data-stage="2" data-price="free" style="--hue: var(--s2)"><span class="si-logo" aria-hidden="true"><b>v0</b><img src="https://cdn.simpleicons.org/v0" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">v0</span><span class="si-use">توليد واجهات من وصف نصي</span><span class="si-tag">٠٢ التصميم</span></a>
+
+          <a class="stack-item" href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener noreferrer" data-stage="3" data-price="paid" style="--hue: var(--s3)"><span class="si-logo" aria-hidden="true"><b>C</b><img src="https://cdn.simpleicons.org/claude" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Claude Code</span><span class="si-use">كتابة الكود خطوة بخطوة</span><span class="si-tag">٠٣ البناء</span></a>
+          <a class="stack-item" href="https://supabase.com/" target="_blank" rel="noopener noreferrer" data-stage="3" data-price="free" style="--hue: var(--s3)"><span class="si-logo" aria-hidden="true"><b>S</b><img src="https://cdn.simpleicons.org/supabase" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Supabase</span><span class="si-use">قاعدة بيانات ومصادقة</span><span class="si-tag">٠٣ البناء</span></a>
+          <a class="stack-item" href="https://vercel.com/" target="_blank" rel="noopener noreferrer" data-stage="3" data-price="free" style="--hue: var(--s3)"><span class="si-logo" aria-hidden="true"><b>V</b><img src="https://cdn.simpleicons.org/vercel" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Vercel</span><span class="si-use">استضافة ونشر تلقائي</span><span class="si-tag">٠٣ البناء</span></a>
+
+          <a class="stack-item" href="https://stripe.com/" target="_blank" rel="noopener noreferrer" data-stage="4" data-price="paid" style="--hue: var(--s4)"><span class="si-logo" aria-hidden="true"><b>S</b><img src="https://cdn.simpleicons.org/stripe" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Stripe</span><span class="si-use">مدفوعات واشتراكات عالمية</span><span class="si-tag">٠٤ الدفع</span></a>
+          <a class="stack-item" href="https://www.paddle.com/" target="_blank" rel="noopener noreferrer" data-stage="4" data-price="paid" style="--hue: var(--s4)"><span class="si-logo" aria-hidden="true"><b>P</b><img src="https://cdn.simpleicons.org/paddle" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Paddle</span><span class="si-use">فوترة وضرائب نيابةً عنك</span><span class="si-tag">٠٤ الدفع</span></a>
+          <a class="stack-item" href="https://moyasar.com/" target="_blank" rel="noopener noreferrer" data-stage="4" data-price="paid" style="--hue: var(--s4)"><span class="si-logo" aria-hidden="true"><b>م</b><img src="https://cdn.simpleicons.org/moyasar" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">ميسر · Moyasar</span><span class="si-use">مدفوعات محلية خليجية</span><span class="si-tag">٠٤ الدفع</span></a>
+
+          <a class="stack-item" href="https://resend.com/" target="_blank" rel="noopener noreferrer" data-stage="5" data-price="free" style="--hue: var(--s5)"><span class="si-logo" aria-hidden="true"><b>R</b><img src="https://cdn.simpleicons.org/resend" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Resend</span><span class="si-use">بريد تشغيلي للمستخدمين</span><span class="si-tag">٠٥ التشغيل</span></a>
+          <a class="stack-item" href="https://crisp.chat/" target="_blank" rel="noopener noreferrer" data-stage="5" data-price="free" style="--hue: var(--s5)"><span class="si-logo" aria-hidden="true"><b>C</b><img src="https://cdn.simpleicons.org/crisp" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Crisp</span><span class="si-use">دردشة دعم داخل المنتج</span><span class="si-tag">٠٥ التشغيل</span></a>
+          <a class="stack-item" href="https://sentry.io/" target="_blank" rel="noopener noreferrer" data-stage="5" data-price="free" style="--hue: var(--s5)"><span class="si-logo" aria-hidden="true"><b>S</b><img src="https://cdn.simpleicons.org/sentry" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Sentry</span><span class="si-use">رصد الأخطاء والأعطال</span><span class="si-tag">٠٥ التشغيل</span></a>
+
+          <a class="stack-item" href="https://posthog.com/" target="_blank" rel="noopener noreferrer" data-stage="6" data-price="free" style="--hue: var(--s6)"><span class="si-logo" aria-hidden="true"><b>P</b><img src="https://cdn.simpleicons.org/posthog" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">PostHog</span><span class="si-use">تحليل سلوك المستخدم</span><span class="si-tag">٠٦ القياس</span></a>
+          <a class="stack-item" href="https://plausible.io/" target="_blank" rel="noopener noreferrer" data-stage="6" data-price="paid" style="--hue: var(--s6)"><span class="si-logo" aria-hidden="true"><b>P</b><img src="https://cdn.simpleicons.org/plausibleanalytics" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Plausible</span><span class="si-use">إحصاءات زيارات خفيفة</span><span class="si-tag">٠٦ القياس</span></a>
+          <a class="stack-item" href="https://umami.is/" target="_blank" rel="noopener noreferrer" data-stage="6" data-price="zero" style="--hue: var(--s6)"><span class="si-logo" aria-hidden="true"><b>U</b><img src="https://cdn.simpleicons.org/umami" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Umami</span><span class="si-use">تحليلات مفتوحة المصدر</span><span class="si-tag">٠٦ القياس</span></a>
+
+          <a class="stack-item" href="https://pages.github.com/" target="_blank" rel="noopener noreferrer" data-stage="7" data-price="zero" style="--hue: var(--s7)"><span class="si-logo" aria-hidden="true"><b>G</b><img src="https://cdn.simpleicons.org/githubpages" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">GitHub Pages</span><span class="si-use">نشر مجاني برابط عام</span><span class="si-tag">٠٧ الإطلاق</span></a>
+          <a class="stack-item" href="https://www.producthunt.com/" target="_blank" rel="noopener noreferrer" data-stage="7" data-price="zero" style="--hue: var(--s7)"><span class="si-logo" aria-hidden="true"><b>P</b><img src="https://cdn.simpleicons.org/producthunt" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">Product Hunt</span><span class="si-use">إطلاق عام أمام جمهور</span><span class="si-tag">٠٧ الإطلاق</span></a>
+          <a class="stack-item" href="https://x.com/" target="_blank" rel="noopener noreferrer" data-stage="7" data-price="zero" style="--hue: var(--s7)"><span class="si-logo" aria-hidden="true"><b>X</b><img src="https://cdn.simpleicons.org/x" alt="" width="24" height="24" loading="lazy" decoding="async" onerror="this.remove()" /></span><span class="si-name">X</span><span class="si-use">البناء علنًا وجذب أوائل المستخدمين</span><span class="si-tag">٠٧ الإطلاق</span></a>
+        </div>
+
+        <p class="stack-empty" id="stackEmpty" hidden>لا توجد أداة تطابق هذا الفلتر. جرّب «كل المراحل» أو امسح البحث.</p>
+      </section>
+
+      <!-- ═══ Final checklist ═══ -->
+      <section class="final" id="final-check" aria-labelledby="final-title">
         <div class="final-inner">
           <div class="final-copy">
             <p class="section-label">آخر خمس دقائق</p>
             <h2 id="final-title">هل منتجك جاهز للإطلاق؟</h2>
-            <p>لا تعني هذه القائمة أن المنتج مثالي. تعني فقط أنه جاهز ليتعلم من العالم الحقيقي.</p>
-            <button class="button button-light" id="copyLaunchText" type="button">
+            <p>لا تعني هذه القائمة أن المنتج مثالي. تعني فقط أنه جاهز ليتعلّم من العالم الحقيقي بدل أن يتعلّم من رأسك.</p>
+            <button class="btn btn-primary" id="copyLaunchText" type="button">
               <span>انسخ نص الإطلاق</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2" /><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" /></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2.5" /><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8" /></svg>
             </button>
             <span class="copy-status" id="copyStatus" role="status" aria-live="polite"></span>
           </div>
 
           <div class="final-list">
-            <label><input type="checkbox" data-final-check="1" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>الحل ينجز وعدًا واحدًا كاملًا.</span></label>
-            <label><input type="checkbox" data-final-check="2" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>جرّبت المسار من هاتف وبريد جديدين.</span></label>
-            <label><input type="checkbox" data-final-check="3" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>توجد طريقة واضحة لطلب المساعدة.</span></label>
-            <label><input type="checkbox" data-final-check="4" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>تعرف إشارة النجاح التي ستراقبها.</span></label>
-            <label><input type="checkbox" data-final-check="5" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>لديك أول عشرة أشخاص ستدعوهم.</span></label>
+            <label><input type="checkbox" data-final-check="1" /><span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>الحل ينجز وعدًا واحدًا كاملًا.</span></label>
+            <label><input type="checkbox" data-final-check="2" /><span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>جرّبت المسار من هاتف وبريد جديدين.</span></label>
+            <label><input type="checkbox" data-final-check="3" /><span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>توجد طريقة واضحة لطلب المساعدة.</span></label>
+            <label><input type="checkbox" data-final-check="4" /><span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>تعرف إشارة النجاح التي ستراقبها.</span></label>
+            <label><input type="checkbox" data-final-check="5" /><span class="done-box" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>لديك أسماء أول عشرة أشخاص ستدعوهم.</span></label>
           </div>
         </div>
       </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <div class="footer-inner">
-        <a class="brand footer-brand" href="#top"><span class="brand-name">أطلقها<span>.</span></span></a>
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M16 3c4.4 4 6.6 8.2 6.6 12.6 0 3-1 5.8-3 8.4h-7.2c-2-2.6-3-5.4-3-8.4C9.4 11.2 11.6 7 16 3Z" /><path d="M12.4 24 9 29l4.6-1.4M19.6 24 23 29l-4.6-1.4" /><circle cx="16" cy="14" r="2.4" /></svg>
+          </span>
+          <span class="brand-name">أطلِقها<em>٢٫٠</em></span>
+        </a>
         <p>دليل عملي مفتوح لمساعدة صانعي المنتجات العرب على الانتقال من الفكرة إلى أول مستخدم.</p>
-        <a class="back-top" href="#top">العودة للأعلى <span aria-hidden="true">↑</span></a>
+        <nav class="footer-links" aria-label="روابط الفوتر">
+          <a href="https://github.com/alar3j/saas-launch-guide" target="_blank" rel="noopener noreferrer">المستودع على GitHub ↗</a>
+          <a href="#top">العودة للأعلى ↑</a>
+        </nav>
       </div>
     </footer>
 
-    <div class="sr-only" id="resetStatus" role="status" aria-live="polite"></div>
-    <script src="script.js" defer></script>
+    <!-- ═══ Search overlay ═══ -->
+    <div class="search-overlay" id="searchOverlay" hidden>
+      <div class="search-backdrop" data-search-close></div>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-label="البحث في الدليل">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.6-3.6" /></svg>
+          <input type="search" id="searchInput" placeholder="ابحث عن مرحلة أو أداة… مثل: دفع، تحليلات، Stripe" autocomplete="off" aria-label="ابحث في الدليل" />
+          <button type="button" class="search-close" data-search-close aria-label="إغلاق البحث">Esc</button>
+        </div>
+        <div class="search-results" id="searchResults" role="listbox" aria-label="نتائج البحث"></div>
+        <p class="search-hint">اكتب للبحث · <kbd>↑</kbd><kbd>↓</kbd> للتنقل · <kbd>Enter</kbd> للفتح</p>
+      </div>
+    </div>
+
+    <div class="sr-only" id="liveStatus" role="status" aria-live="polite"></div>
+    <script src="app.js" defer></script>
   </body>
 </html>

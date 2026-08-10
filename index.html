@@ -3,186 +3,368 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="دليل عربي عملي ومجاني لبناء وإطلاق منتج SaaS من الفكرة إلى أول مستخدم." />
-    <meta name="theme-color" content="#10161d" />
-    <title>أطلِقها — دليل بناء SaaS</title>
+    <meta name="description" content="دليل عربي عملي لبناء منتج SaaS وإطلاقه في سبع مراحل واضحة." />
+    <meta name="theme-color" content="#f7f7f5" />
+    <meta name="color-scheme" content="light" />
+    <meta property="og:title" content="أطلقها — دليل بناء SaaS" />
+    <meta property="og:description" content="من الفكرة إلى أول مستخدم: سبع مراحل عملية، أدوات واضحة، وقائمة إطلاق تحفظ تقدّمك." />
+    <title>أطلقها — دليل بناء SaaS</title>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dawod/thmanyah-font-web@1.2.0/index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <a class="skip-link" href="#guide">تجاوز إلى الدليل</a>
 
-    <header class="topbar" id="top">
-      <a class="brand" href="#top" aria-label="أطلِقها، العودة للبداية">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>أطلِقها</span>
-      </a>
-      <div class="topbar-actions">
-        <span class="edition">النسخة ٠١</span>
-        <a class="mini-link" href="#final-check">قائمة الإطلاق</a>
+  <body>
+    <a class="skip-link" href="#guide">تجاوز إلى محتوى الدليل</a>
+
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="أطلقها، العودة إلى البداية">
+          <span class="brand-symbol" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M16 3v8M4.8 9.4l6.9 4M27.2 9.4l-6.9 4M5 22.5h22" /></svg>
+          </span>
+          <span class="brand-name">أطلقها<span>.</span></span>
+        </a>
+
+        <nav class="header-nav" aria-label="التنقل الرئيسي">
+          <a href="#roadmap">المسار</a>
+          <a href="#final-check">قائمة الإطلاق</a>
+        </nav>
+
+        <div class="header-progress" aria-label="نسبة إنجاز الدليل">
+          <span>تقدّمك</span>
+          <strong id="headerProgressText">٠ من ٧</strong>
+        </div>
       </div>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-copy">
-          <p class="eyebrow"><span></span> دليل عربي عملي لبناء SaaS</p>
-          <h1 id="hero-title">ابنِ منتجًا<br /><em>يستحق أن يُطلَق.</em></h1>
-          <p class="hero-lead">رحلة مركّزة من فكرة مبعثرة إلى رابط يفتحه أول مستخدم — دون الغرق في الأدوات أو انتظار «الوقت المثالي».</p>
-          <div class="hero-cta">
-            <a class="button button-primary" href="#guide">
-              <span>ابدأ المسار</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
-            <span class="read-time">٧ محطات · قراءة مرنة</span>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="hero-badge">
+              <span aria-hidden="true"></span>
+              دليل عملي مجاني لبناء SaaS
+            </p>
+            <h1 id="hero-title">حوّل فكرتك إلى منتج <span>SaaS</span> يعمل.</h1>
+            <p class="hero-lead">سبع مراحل واضحة تنقلك من مشكلة حقيقية إلى رابط يفتحه أول مستخدم؛ بلا حشو، وبلا ضياع بين عشرات الأدوات.</p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#stage-1">
+                <span>ابدأ من المرحلة الأولى</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a class="button button-secondary" href="#roadmap">شاهد المسار كاملًا</a>
+            </div>
+
+            <dl class="hero-stats" aria-label="معلومات الدليل">
+              <div><dt>المراحل</dt><dd>٧</dd></div>
+              <div><dt>وقت القراءة</dt><dd>١٠ دقائق</dd></div>
+              <div><dt>حفظ التقدّم</dt><dd>تلقائي</dd></div>
+            </dl>
+          </div>
+
+          <div class="hero-visual" aria-label="النتيجة النهائية للدليل">
+            <div class="visual-topline">
+              <span>من الفكرة إلى الإطلاق</span>
+              <span class="status-dot">مسار عملي</span>
+            </div>
+
+            <div class="visual-number" aria-hidden="true">٠١ — ٠٧</div>
+            <h2>في النهاية سيكون لديك منتج صغير، واضح، وجاهز للاختبار.</h2>
+
+            <ul class="visual-list">
+              <li><span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>مشكلة مؤكدة من مستخدمين حقيقيين</li>
+              <li><span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>نسخة أولى تنجز وعدًا واحدًا</li>
+              <li><span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>خطة واضحة لأول عشرة مستخدمين</li>
+            </ul>
+
+            <div class="visual-footer">
+              <span>القاعدة الوحيدة</span>
+              <strong>نفّذ مرحلة واحدة في كل مرة.</strong>
+            </div>
           </div>
         </div>
-
-        <aside class="launch-card" aria-label="وعد الدليل">
-          <div class="launch-card-top">
-            <span>مهمّتك القادمة</span>
-            <span class="pulse" aria-hidden="true"></span>
-          </div>
-          <strong>نسخة صغيرة<br />يمكن لشخص حقيقي استخدامها</strong>
-          <div class="launch-meter" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <p>لا تبحث عن خطة مثالية. ابحث عن خطوة واضحة تستطيع إنهاءها اليوم.</p>
-        </aside>
-
-        <div class="hero-caption">من الصفر ← إلى أول إشارة سوق</div>
       </section>
 
-      <section class="orientation" aria-label="كيف تستخدم الدليل">
-        <div class="orientation-title">
-          <span class="chapter-number">٠٠</span>
-          <div>
-            <p class="eyebrow"><span></span> طريقة الاستخدام</p>
-            <h2>لا تقرأه ككتاب.<br />استخدمه كلوحة تحكم.</h2>
-          </div>
+      <section class="roadmap" id="roadmap" aria-labelledby="roadmap-title">
+        <div class="section-heading">
+          <p class="section-label">المسار في نظرة واحدة</p>
+          <h2 id="roadmap-title">سبع مراحل. قرار واضح في كل مرحلة.</h2>
+          <p>ابدأ من الصفر، أو انتقل مباشرة إلى المرحلة التي يعمل عليها مشروعك الآن.</p>
         </div>
-        <div class="orientation-steps">
-          <article><b>١</b><p>اقرأ محطة واحدة فقط.</p></article>
-          <article><b>٢</b><p>نفّذ «الخطوة الآن».</p></article>
-          <article><b>٣</b><p>علّمها منجزة وانتقل.</p></article>
-        </div>
+
+        <nav class="roadmap-grid" aria-label="مراحل بناء المنتج">
+          <a href="#stage-1"><span>٠١</span><strong>الفكرة والتحقق</strong><small>هل المشكلة حقيقية؟</small></a>
+          <a href="#stage-2"><span>٠٢</span><strong>التصميم</strong><small>ما أقصر طريق للقيمة؟</small></a>
+          <a href="#stage-3"><span>٠٣</span><strong>البناء</strong><small>ما أصغر نسخة مفيدة؟</small></a>
+          <a href="#stage-4"><span>٠٤</span><strong>الدفع</strong><small>هل العرض واضح؟</small></a>
+          <a href="#stage-5"><span>٠٥</span><strong>التشغيل</strong><small>هل التجربة موثوقة؟</small></a>
+          <a href="#stage-6"><span>٠٦</span><strong>القياس</strong><small>ما الإشارة المهمة؟</small></a>
+          <a href="#stage-7"><span>٠٧</span><strong>الإطلاق</strong><small>من أول مستخدم؟</small></a>
+        </nav>
       </section>
 
       <div class="guide-layout" id="guide">
-        <aside class="rail" aria-label="فهرس المسار">
-          <div class="rail-progress">
-            <span>تقدّمك</span>
-            <strong id="progressText">٠ / ٧</strong>
+        <aside class="guide-sidebar" aria-label="فهرس الدليل والتقدم">
+          <div class="progress-panel">
+            <div class="progress-copy">
+              <span>أنجزت</span>
+              <strong id="progressText">٠ من ٧</strong>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" aria-label="تقدمك في الدليل">
+              <span id="progressBar"></span>
+            </div>
           </div>
-          <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
-          <nav class="chapter-nav" aria-label="محطات الدليل">
-            <a href="#stage-1" data-stage-link="1"><small>٠١</small><span>ثبّت المشكلة</span></a>
-            <a href="#stage-2" data-stage-link="2"><small>٠٢</small><span>ارسم المسار</span></a>
-            <a href="#stage-3" data-stage-link="3"><small>٠٣</small><span>ابنِ النواة</span></a>
-            <a href="#stage-4" data-stage-link="4"><small>٠٤</small><span>اجعل الدفع ممكنًا</span></a>
-            <a href="#stage-5" data-stage-link="5"><small>٠٥</small><span>جهّز التشغيل</span></a>
-            <a href="#stage-6" data-stage-link="6"><small>٠٦</small><span>قِس الإشارات</span></a>
-            <a href="#stage-7" data-stage-link="7"><small>٠٧</small><span>أطلِق وتعلّم</span></a>
+
+          <nav class="chapter-nav" aria-label="فصول الدليل">
+            <a href="#stage-1" data-stage-link="1"><small>٠١</small><span>الفكرة والتحقق</span></a>
+            <a href="#stage-2" data-stage-link="2"><small>٠٢</small><span>التصميم</span></a>
+            <a href="#stage-3" data-stage-link="3"><small>٠٣</small><span>البناء</span></a>
+            <a href="#stage-4" data-stage-link="4"><small>٠٤</small><span>الدفع</span></a>
+            <a href="#stage-5" data-stage-link="5"><small>٠٥</small><span>التشغيل</span></a>
+            <a href="#stage-6" data-stage-link="6"><small>٠٦</small><span>القياس</span></a>
+            <a href="#stage-7" data-stage-link="7"><small>٠٧</small><span>الإطلاق</span></a>
           </nav>
-          <button class="reset-button" id="resetProgress" type="button">إعادة التقدّم</button>
+
+          <button class="reset-button" id="resetProgress" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v6h6M20 20v-6h-6M5.5 15a7 7 0 0 0 11.5 2M18.5 9A7 7 0 0 0 7 7" /></svg>
+            <span>إعادة ضبط التقدّم</span>
+          </button>
         </aside>
 
         <div class="stages">
-          <section class="stage stage-coral reveal" id="stage-1" data-stage="1" aria-labelledby="stage-1-title">
-            <header class="stage-header">
-              <span class="chapter-number">٠١</span>
-              <div><p class="stage-kicker">قبل أن تكتب سطرًا واحدًا</p><h2 id="stage-1-title">ثبّت المشكلة<br />لا فكرتك.</h2></div>
-              <label class="stage-check"><input type="checkbox" data-check="1" /><span>أنجزتها</span></label>
+          <article class="stage reveal" id="stage-1" data-stage="1" aria-labelledby="stage-1-title">
+            <header class="stage-heading">
+              <div class="stage-meta"><span>المرحلة ٠١</span><span>الفكرة والتحقق</span></div>
+              <h2 id="stage-1-title">تأكّد أن المشكلة تستحق الحل.</h2>
+              <p>لا تبدأ بالمنتج. ابدأ بموقف متكرر يكلّف شخصًا وقتًا أو مالًا أو أعصابًا، ثم افهم كيف يتعامل معه اليوم.</p>
+              <label class="complete-control">
+                <input type="checkbox" data-check="1" />
+                <span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span>
+                <span>أكملت المرحلة</span>
+              </label>
             </header>
-            <div class="stage-content">
-              <div class="stage-intro"><p>الفكرة الجميلة لا تكفي. ابحث عن موقف متكرر يكلّف شخصًا وقتًا أو مالًا أو أعصابًا؛ ثم افهم كيف يحلّه اليوم.</p><p class="trap"><b>الفخ:</b> سؤال الناس: «هل ستستخدم هذا؟» الإجابة غالبًا لطيفة، وليست مفيدة.</p></div>
-              <div class="action-card">
-                <span class="card-label">الخطوة الآن</span>
-                <h3>أجرِ ٥ محادثات قصيرة</h3>
-                <p>اسأل: «متى واجهت المشكلة آخر مرة؟ ماذا فعلت؟ وما الذي كان مزعجًا فعلًا؟»</p>
-                <div class="question-row"><span>النتيجة المطلوبة</span><strong>جملة واحدة تصف ألمًا متكررًا</strong></div>
+
+            <div class="stage-details">
+              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>أن تسأل الناس: «هل ستستخدم فكرتي؟». الإجابات اللطيفة ليست دليلًا على وجود طلب.</p></div></aside>
+
+              <div class="stage-cards">
+                <section class="action-card">
+                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8v8M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg></div>
+                  <div>
+                    <p class="card-label">نفّذ الآن</p>
+                    <h3>أجرِ خمس محادثات قصيرة</h3>
+                    <p>اسأل كل شخص: متى واجهت المشكلة آخر مرة؟ ماذا فعلت؟ وما الجزء الأكثر إزعاجًا؟</p>
+                    <div class="outcome"><span>الناتج المطلوب</span><strong>جملة واحدة تصف ألمًا متكررًا.</strong></div>
+                  </div>
+                </section>
+
+                <a class="tool-card" href="https://www.notion.so/" target="_blank" rel="noreferrer">
+                  <div><p class="card-label">الأداة المقترحة</p><h3>Notion</h3><p>اجمع المقابلات والملاحظات في صفحة واحدة بسيطة.</p></div>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg>
+                </a>
               </div>
-              <div class="tool-note"><span>أداة خفيفة</span><a href="https://www.notion.so/" target="_blank" rel="noreferrer">Notion <b>↗</b></a><p>لجمع إجابات المستخدمين في مكان واحد.</p></div>
             </div>
-          </section>
+          </article>
 
-          <section class="stage stage-lime reveal" id="stage-2" data-stage="2" aria-labelledby="stage-2-title">
-            <header class="stage-header"><span class="chapter-number">٠٢</span><div><p class="stage-kicker">ليس مطلوبًا تصميم كل شيء</p><h2 id="stage-2-title">ارسم الطريق<br />إلى القيمة.</h2></div><label class="stage-check"><input type="checkbox" data-check="2" /><span>أنجزتها</span></label></header>
-            <div class="stage-content">
-              <div class="stage-intro"><p>أول شاشة مهمة ليست الصفحة الرئيسية؛ إنها اللحظة التي يصل فيها المستخدم إلى نتيجة يراها بعينه. ارسم تلك الرحلة أولًا.</p><p class="trap"><b>الفخ:</b> مطاردة هوية كاملة قبل أن تعرف ما الذي سيضغطه المستخدم أصلًا.</p></div>
-              <div class="path-card" aria-label="مسار المستخدم الأساسي"><span>دخول</span><i></i><span>خطوة بسيطة</span><i></i><span>نتيجة واضحة</span><i></i><strong>قيمة</strong></div>
-              <div class="action-card"><span class="card-label">الخطوة الآن</span><h3>ارسم المسار في ٣ شاشات</h3><p>الشاشة الأولى: بداية واضحة. الثانية: فعل واحد فقط. الثالثة: نتيجة يمكن مشاركتها أو حفظها.</p></div>
-              <div class="tool-note"><span>أداة خفيفة</span><a href="https://www.figma.com/" target="_blank" rel="noreferrer">Figma <b>↗</b></a><p>يكفي ملف واحد ورسومات بسيطة.</p></div>
-            </div>
-          </section>
+          <article class="stage reveal" id="stage-2" data-stage="2" aria-labelledby="stage-2-title">
+            <header class="stage-heading">
+              <div class="stage-meta"><span>المرحلة ٠٢</span><span>التصميم</span></div>
+              <h2 id="stage-2-title">ارسم أقصر طريق إلى القيمة.</h2>
+              <p>لا تصمّم عشرين شاشة. حدّد اللحظة التي يرى فيها المستخدم نتيجة مفيدة، ثم ابنِ الطريق الأقصر إليها.</p>
+              <label class="complete-control"><input type="checkbox" data-check="2" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+            </header>
 
-          <section class="stage stage-dark reveal" id="stage-3" data-stage="3" aria-labelledby="stage-3-title">
-            <header class="stage-header"><span class="chapter-number">٠٣</span><div><p class="stage-kicker">MVP لا يعني منتجًا ناقصًا</p><h2 id="stage-3-title">ابنِ النواة.<br />واحذف الباقي.</h2></div><label class="stage-check"><input type="checkbox" data-check="3" /><span>أنجزتها</span></label></header>
-            <div class="stage-content">
-              <div class="stage-intro"><p>نسختك الأولى يجب أن تنجز وعدًا واحدًا بوضوح، حتى لو كان جزء من العمل يدويًا خلف الكواليس. اجعل «النتيجة» مكتملة، لا «الخصائص» كثيرة.</p><p class="trap"><b>الفخ:</b> بناء إعدادات وصلاحيات ولوحات قبل أن يستخدم المنتج شخص واحد.</p></div>
-              <div class="build-card"><span class="code-line">// قاعدة النسخة ٠.١</span><strong>مستخدم واحد + مشكلة واحدة + نتيجة واحدة</strong><p>أي ميزة لا تغيّر النتيجة الآن = لاحقًا.</p></div>
-              <div class="action-card"><span class="card-label">الخطوة الآن</span><h3>اكتب قائمة «لن نبنيها»</h3><p>اكتب ١٠ ميزات مغرية، ثم جمّدها. هذا يحرر الوقت لما يحتاجه أول مستخدم فعلًا.</p></div>
-              <div class="tool-note"><span>رفيق البناء</span><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noreferrer">Claude Code <b>↗</b></a><p>استخدمه مع مواصفة قصيرة وواضحة لكل خطوة.</p></div>
-            </div>
-          </section>
+            <div class="stage-details">
+              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>إضاعة أسبوعين في الهوية والألوان قبل معرفة ما الذي سيضغطه المستخدم أصلًا.</p></div></aside>
 
-          <section class="stage stage-blue reveal" id="stage-4" data-stage="4" aria-labelledby="stage-4-title">
-            <header class="stage-header"><span class="chapter-number">٠٤</span><div><p class="stage-kicker">ليس السعر مجرد رقم</p><h2 id="stage-4-title">اجعل الدفع<br />ممكنًا وواضحًا.</h2></div><label class="stage-check"><input type="checkbox" data-check="4" /><span>أنجزتها</span></label></header>
-            <div class="stage-content">
-              <div class="stage-intro"><p>اختبر رغبة الدفع في وقت مبكر. قد تبدأ بدفع يدوي أو رابط بسيط، لكن يجب أن تعرف ما الذي يشتريه العميل بالضبط ومتى.</p><p class="trap"><b>الفخ:</b> إخفاء السعر كاملًا لأنك تخاف من رفض السوق.</p></div>
-              <div class="pricing-card"><span class="card-label">اختبار العرض</span><div><strong>لمن؟</strong><p>فئة واحدة محددة.</p></div><div><strong>مقابل ماذا؟</strong><p>نتيجة قابلة للقياس.</p></div><div><strong>بأي وضوح؟</strong><p>سعر أو طريقة طلب ظاهرة.</p></div></div>
-              <div class="action-card"><span class="card-label">الخطوة الآن</span><h3>اكتب عرضك في سطرين</h3><p>«أساعد [فئة محددة] على [نتيجة] دون [العائق الرئيسي]». ثم أضف طريقة مباشرة لطلب التجربة أو الشراء.</p></div>
-              <div class="tool-note"><span>للدفع العالمي</span><a href="https://stripe.com/" target="_blank" rel="noreferrer">Stripe <b>↗</b></a><p>تحقّق من دعم بلدك واحتياجك قبل اختيار أي بوابة.</p></div>
-            </div>
-          </section>
+              <div class="mini-flow" aria-label="المسار الأساسي للمستخدم"><span>دخول</span><i></i><span>فعل واحد</span><i></i><span>نتيجة</span><i></i><strong>قيمة</strong></div>
 
-          <section class="stage stage-paper reveal" id="stage-5" data-stage="5" aria-labelledby="stage-5-title">
-            <header class="stage-header"><span class="chapter-number">٠٥</span><div><p class="stage-kicker">التجربة تبدأ بعد زر التسجيل</p><h2 id="stage-5-title">جهّز التشغيل<br />قبل وصولهم.</h2></div><label class="stage-check"><input type="checkbox" data-check="5" /><span>أنجزتها</span></label></header>
-            <div class="stage-content">
-              <div class="stage-intro"><p>رسالة الدخول، رسالة الخطأ، وطريقة طلب المساعدة ليست تفاصيل ثانوية. هذه اللحظات إما تجعل المنتج يبدو موثوقًا أو تجعل المستخدم يختفي.</p><p class="trap"><b>الفخ:</b> اكتشاف أن رسائل التسجيل تصل إلى البريد المزعج يوم الإطلاق.</p></div>
-              <div class="ops-list"><div><span>١</span><p>رسالة ترحيب تقول بوضوح: ما الخطوة التالية؟</p></div><div><span>٢</span><p>طريقة واحدة مرئية للتواصل وطلب المساعدة.</p></div><div><span>٣</span><p>سيناريو مختبر للاسترجاع عند الخطأ أو نسيان كلمة المرور.</p></div></div>
-              <div class="action-card"><span class="card-label">الخطوة الآن</span><h3>مرّر التجربة كأنك مستخدم جديد</h3><p>افتحها من هاتفك، سجّل ببريد جديد، ثم حاول الوصول للقيمة دون أي مساعدة من نفسك.</p></div>
-              <div class="tool-note"><span>للبريد التشغيلي</span><a href="https://resend.com/" target="_blank" rel="noreferrer">Resend <b>↗</b></a><p>اختبر الرسائل من نطاقك قبل الإعلان.</p></div>
-            </div>
-          </section>
+              <div class="stage-cards">
+                <section class="action-card">
+                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19h16M7 16V8m5 8V5m5 11v-5" /></svg></div>
+                  <div><p class="card-label">نفّذ الآن</p><h3>ارسم التجربة في ثلاث شاشات</h3><p>بداية واضحة، فعل واحد، ثم نتيجة يستطيع المستخدم حفظها أو مشاركتها.</p><div class="outcome"><span>الناتج المطلوب</span><strong>مسار يمكن شرحه خلال دقيقة.</strong></div></div>
+                </section>
 
-          <section class="stage stage-violet reveal" id="stage-6" data-stage="6" aria-labelledby="stage-6-title">
-            <header class="stage-header"><span class="chapter-number">٠٦</span><div><p class="stage-kicker">لا تحتاج لوحة قيادة عملاقة</p><h2 id="stage-6-title">قِس إشارة<br />واحدة صادقة.</h2></div><label class="stage-check"><input type="checkbox" data-check="6" /><span>أنجزتها</span></label></header>
-            <div class="stage-content">
-              <div class="stage-intro"><p>اختر رقمًا واحدًا يدل أن المستخدم وصل للفائدة. الزيارات قد تشعرك بالانشغال، لكن الإجراء الذي يكرره المستخدم هو الإشارة المهمة.</p><p class="trap"><b>الفخ:</b> قياس كل شيء، ثم عدم اتخاذ أي قرار.</p></div>
-              <div class="metric-card"><span>اسأل نفسك</span><strong>ما الفعل الذي لو تكرر أسبوعيًا، سأعرف أن المنتج نافع؟</strong><div class="metric-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-              <div class="action-card"><span class="card-label">الخطوة الآن</span><h3>عرّف حدث النجاح</h3><p>سمّه بصيغة فعل: «أنشأ تقريرًا»، «أتمّ تصديرًا»، «دعا عضوًا». ثم سجّله من أول نسخة.</p></div>
-              <div class="tool-note"><span>لرصد السلوك</span><a href="https://posthog.com/" target="_blank" rel="noreferrer">PostHog <b>↗</b></a><p>ابدأ بعدد قليل من الأحداث التي تتخذ عليها قرارًا.</p></div>
+                <a class="tool-card" href="https://www.figma.com/" target="_blank" rel="noreferrer">
+                  <div><p class="card-label">الأداة المقترحة</p><h3>Figma</h3><p>إطارات بسيطة ونظام ألوان وخط واحد يكفي في البداية.</p></div>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg>
+                </a>
+              </div>
             </div>
-          </section>
+          </article>
 
-          <section class="stage stage-orange reveal" id="stage-7" data-stage="7" aria-labelledby="stage-7-title">
-            <header class="stage-header"><span class="chapter-number">٠٧</span><div><p class="stage-kicker">المنتج غير المُعلن غير موجود</p><h2 id="stage-7-title">أطلِق. اسمع.<br />ثم حسّن.</h2></div><label class="stage-check"><input type="checkbox" data-check="7" /><span>أنجزتها</span></label></header>
-            <div class="stage-content">
-              <div class="stage-intro"><p>الإطلاق ليس منشورًا كبيرًا فقط؛ هو دعوة واضحة لأول مجموعة مناسبة. لا تلاحق الجميع، ابدأ بمن تعرف أن المشكلة تؤلمهم الآن.</p><p class="trap"><b>الفخ:</b> تأجيل النشر لأن هناك «تحسينًا صغيرًا أخيرًا».</p></div>
-              <div class="launch-script"><span class="card-label">نص بسيط للإطلاق</span><p>«بنيت أداة تساعد <b>[الفئة]</b> على <b>[النتيجة]</b>. أبحث عن <b>٥</b> أشخاص يجربونها ويخبرونني بما لا يعمل.»</p></div>
-              <div class="action-card"><span class="card-label">الخطوة الآن</span><h3>أرسل ١٠ دعوات شخصية</h3><p>لا ترسل رابطًا باردًا فقط؛ اشرح لماذا تواصلت مع هذا الشخص بالتحديد، ثم اطلب مكالمة قصيرة بعد التجربة.</p></div>
-              <div class="tool-note"><span>للنشر السريع</span><a href="https://pages.github.com/" target="_blank" rel="noreferrer">GitHub Pages <b>↗</b></a><p>حوّل مستودعك إلى رابط يمكن مشاركته خلال دقائق.</p></div>
+          <article class="stage reveal" id="stage-3" data-stage="3" aria-labelledby="stage-3-title">
+            <header class="stage-heading">
+              <div class="stage-meta"><span>المرحلة ٠٣</span><span>البناء</span></div>
+              <h2 id="stage-3-title">ابنِ أصغر نسخة مفيدة.</h2>
+              <p>نسختك الأولى لا تحتاج ميزات كثيرة. تحتاج وعدًا واحدًا تنجزه كاملًا، حتى لو كان جزء من العمل يدويًا خلف الكواليس.</p>
+              <label class="complete-control"><input type="checkbox" data-check="3" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+            </header>
+
+            <div class="stage-details">
+              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>بناء الصلاحيات والإعدادات ولوحات الإدارة قبل أن يستخدم المنتج شخص واحد.</p></div></aside>
+
+              <blockquote class="principle"><span>قاعدة النسخة ٠٫١</span><strong>مستخدم واحد + مشكلة واحدة + نتيجة واحدة</strong></blockquote>
+
+              <div class="stage-cards">
+                <section class="action-card">
+                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14" /></svg></div>
+                  <div><p class="card-label">نفّذ الآن</p><h3>اكتب قائمة «لن نبنيها»</h3><p>اجمع عشر ميزات مغرية وجمّدها. أبقِ فقط ما يغيّر النتيجة الأساسية للمستخدم.</p><div class="outcome"><span>الناتج المطلوب</span><strong>نسخة تنجز وظيفة واحدة بإتقان.</strong></div></div>
+                </section>
+
+                <a class="tool-card" href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noreferrer">
+                  <div><p class="card-label">رفيق البناء</p><h3>Claude Code</h3><p>أعطه مواصفة قصيرة، وابنِ خطوة واحدة ثم اختبرها.</p></div>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg>
+                </a>
+              </div>
             </div>
-          </section>
+          </article>
+
+          <article class="stage reveal" id="stage-4" data-stage="4" aria-labelledby="stage-4-title">
+            <header class="stage-heading">
+              <div class="stage-meta"><span>المرحلة ٠٤</span><span>الدفع</span></div>
+              <h2 id="stage-4-title">اجعل العرض والدفع واضحين.</h2>
+              <p>اختبر الاستعداد للدفع مبكرًا. قد تبدأ برابط أو طلب يدوي، لكن على العميل أن يفهم ما الذي يشتريه وكم سيدفع.</p>
+              <label class="complete-control"><input type="checkbox" data-check="4" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+            </header>
+
+            <div class="stage-details">
+              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>إخفاء السعر وطريقة الطلب بالكامل لأنك تخشى رفض السوق.</p></div></aside>
+
+              <div class="stage-cards">
+                <section class="action-card">
+                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h18v10H3zM7 12h3" /></svg></div>
+                  <div><p class="card-label">نفّذ الآن</p><h3>اكتب عرضك في سطرين</h3><p>«أساعد [فئة محددة] على [نتيجة واضحة] دون [العائق الرئيسي]». أضف بعدها سعرًا أو طريقة مباشرة لطلب التجربة.</p><div class="outcome"><span>اختبار الوضوح</span><strong>يفهمه شخص جديد خلال عشر ثوانٍ.</strong></div></div>
+                </section>
+
+                <a class="tool-card" href="https://stripe.com/" target="_blank" rel="noreferrer">
+                  <div><p class="card-label">للدفع العالمي</p><h3>Stripe</h3><p>تحقّق أولًا من دعم بلدك وسوقك قبل بدء التكامل.</p></div>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage reveal" id="stage-5" data-stage="5" aria-labelledby="stage-5-title">
+            <header class="stage-heading">
+              <div class="stage-meta"><span>المرحلة ٠٥</span><span>التشغيل والتواصل</span></div>
+              <h2 id="stage-5-title">جهّز التجربة قبل وصول المستخدم.</h2>
+              <p>رسالة الدخول، حالة الخطأ، وطريقة طلب المساعدة ليست تفاصيل ثانوية؛ هي ما يجعل المنتج يبدو موثوقًا.</p>
+              <label class="complete-control"><input type="checkbox" data-check="5" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+            </header>
+
+            <div class="stage-details">
+              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>اكتشاف يوم الإطلاق أن رسالة التسجيل لا تصل أو أن المستخدم لا يعرف ماذا يفعل بعدها.</p></div></aside>
+
+              <div class="stage-cards">
+                <section class="action-card">
+                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 7l8 6 8-6" /></svg></div>
+                  <div><p class="card-label">نفّذ الآن</p><h3>جرّب المنتج كمستخدم جديد</h3><p>افتحه من هاتفك، سجّل ببريد جديد، نفّذ المهمة الأساسية، ثم جرّب استرجاع الحساب وطلب المساعدة.</p><div class="outcome"><span>اختبر تحديدًا</span><strong>الترحيب، الخطأ، الدعم، والاسترجاع.</strong></div></div>
+                </section>
+
+                <a class="tool-card" href="https://resend.com/" target="_blank" rel="noreferrer">
+                  <div><p class="card-label">للبريد التشغيلي</p><h3>Resend</h3><p>اختبر الإرسال من نطاقك ووصول الرسائل قبل الإعلان.</p></div>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage reveal" id="stage-6" data-stage="6" aria-labelledby="stage-6-title">
+            <header class="stage-heading">
+              <div class="stage-meta"><span>المرحلة ٠٦</span><span>التحليلات والقياس</span></div>
+              <h2 id="stage-6-title">راقب إشارة واحدة صادقة.</h2>
+              <p>الزيارات وحدها لا تعني أن المنتج مفيد. اختر فعلًا واحدًا يدل أن المستخدم وصل إلى النتيجة التي وعدته بها.</p>
+              <label class="complete-control"><input type="checkbox" data-check="6" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+            </header>
+
+            <div class="stage-details">
+              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>قياس عشرات الأحداث وصناعة لوحة ضخمة، ثم عدم اتخاذ قرار واحد منها.</p></div></aside>
+
+              <blockquote class="principle"><span>السؤال الأهم</span><strong>ما الفعل الذي إن تكرر أسبوعيًا سأعرف أن المنتج نافع؟</strong></blockquote>
+
+              <div class="stage-cards">
+                <section class="action-card">
+                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8" /></svg></div>
+                  <div><p class="card-label">نفّذ الآن</p><h3>سمِّ حدث النجاح بصيغة فعل</h3><p>مثل: «أنشأ تقريرًا»، «أتمّ تصديرًا»، أو «دعا عضوًا». سجّله من النسخة الأولى وراجعه أسبوعيًا.</p><div class="outcome"><span>الناتج المطلوب</span><strong>رقم واحد يغيّر قراراتك.</strong></div></div>
+                </section>
+
+                <a class="tool-card" href="https://posthog.com/" target="_blank" rel="noreferrer">
+                  <div><p class="card-label">لفهم السلوك</p><h3>PostHog</h3><p>ابدأ بأحداث قليلة مرتبطة مباشرة بقيمة المنتج.</p></div>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage reveal" id="stage-7" data-stage="7" aria-labelledby="stage-7-title">
+            <header class="stage-heading">
+              <div class="stage-meta"><span>المرحلة ٠٧</span><span>النشر والإطلاق</span></div>
+              <h2 id="stage-7-title">أطلق إلى أول عشرة مستخدمين.</h2>
+              <p>الإطلاق ليس منشورًا ضخمًا. هو دعوة شخصية وواضحة لأشخاص تعرف أن المشكلة تؤلمهم الآن، ثم الاستماع لما يحدث.</p>
+              <label class="complete-control"><input type="checkbox" data-check="7" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>أكملت المرحلة</span></label>
+            </header>
+
+            <div class="stage-details">
+              <aside class="pitfall"><span>انتبه</span><div><strong>الفخ الشائع</strong><p>تأجيل النشر كل أسبوع بحجة وجود تحسين أخير لا يغيّر النتيجة الأساسية.</p></div></aside>
+
+              <div class="launch-template"><span>نص جاهز للتعديل</span><p>«بنيت أداة تساعد <b>[الفئة]</b> على <b>[النتيجة]</b>. أبحث عن خمسة أشخاص يجربونها ويخبرونني بصدق بما لا يعمل.»</p></div>
+
+              <div class="stage-cards">
+                <section class="action-card">
+                  <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14 4 6 6-9 9H5v-6zM12 6l6 6" /></svg></div>
+                  <div><p class="card-label">نفّذ الآن</p><h3>أرسل عشر دعوات شخصية</h3><p>اشرح لكل شخص لماذا تواصلت معه تحديدًا، واطلب منه تجربة المهمة الأساسية ثم مكالمة قصيرة.</p><div class="outcome"><span>الهدف الأول</span><strong>تعلم حقيقي، لا انتشار واسع.</strong></div></div>
+                </section>
+
+                <a class="tool-card" href="https://pages.github.com/" target="_blank" rel="noreferrer">
+                  <div><p class="card-label">للنشر السريع</p><h3>GitHub Pages</h3><p>حوّل المستودع إلى رابط عام يمكن مشاركته خلال دقائق.</p></div>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M10 14 19 5M19 14v5H5V5h5" /></svg>
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
 
       <section class="final-check" id="final-check" aria-labelledby="final-title">
-        <div class="final-heading"><p class="eyebrow"><span></span> آخر خمس دقائق قبل النشر</p><h2 id="final-title">لا تطلب إذنًا<br />من الكمال.</h2><p>اكتمال هذه القائمة لا يعني أن المنتج مثالي؛ يعني فقط أنه جاهز ليتكلم مع العالم.</p></div>
-        <div class="final-list">
-          <label><input type="checkbox" data-final-check="1" /><span>الحل ينجز وعدًا واحدًا كاملًا.</span></label>
-          <label><input type="checkbox" data-final-check="2" /><span>جرّبت المسار من هاتف وبريد جديدين.</span></label>
-          <label><input type="checkbox" data-final-check="3" /><span>توجد طريقة واضحة لطلب المساعدة.</span></label>
-          <label><input type="checkbox" data-final-check="4" /><span>تعرف ما الإشارة التي ستراقبها بعد الإطلاق.</span></label>
-          <label><input type="checkbox" data-final-check="5" /><span>هناك أول ١٠ أشخاص ستدعوهم.</span></label>
+        <div class="final-inner">
+          <div class="final-copy">
+            <p class="section-label">آخر خمس دقائق</p>
+            <h2 id="final-title">هل منتجك جاهز للإطلاق؟</h2>
+            <p>لا تعني هذه القائمة أن المنتج مثالي. تعني فقط أنه جاهز ليتعلم من العالم الحقيقي.</p>
+            <button class="button button-light" id="copyLaunchText" type="button">
+              <span>انسخ نص الإطلاق</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2" /><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" /></svg>
+            </button>
+            <span class="copy-status" id="copyStatus" role="status" aria-live="polite"></span>
+          </div>
+
+          <div class="final-list">
+            <label><input type="checkbox" data-final-check="1" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>الحل ينجز وعدًا واحدًا كاملًا.</span></label>
+            <label><input type="checkbox" data-final-check="2" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>جرّبت المسار من هاتف وبريد جديدين.</span></label>
+            <label><input type="checkbox" data-final-check="3" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>توجد طريقة واضحة لطلب المساعدة.</span></label>
+            <label><input type="checkbox" data-final-check="4" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>تعرف إشارة النجاح التي ستراقبها.</span></label>
+            <label><input type="checkbox" data-final-check="5" /><span class="check-ui" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9" /></svg></span><span>لديك أول عشرة أشخاص ستدعوهم.</span></label>
+          </div>
         </div>
-        <div class="final-actions"><button class="button button-dark" id="copyLaunchText" type="button"><span>انسخ نص الإطلاق</span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="1" /><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" /></svg></button><span id="copyStatus" aria-live="polite"></span></div>
       </section>
     </main>
 
-    <footer><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>أطلِقها</span></a><p>دليل صغير يذكّرك أن البناء يبدأ بالوضوح، وينضج مع المستخدمين.</p><a href="#top">العودة للبداية ↑</a></footer>
-    <script src="script.js"></script>
+    <footer>
+      <div class="footer-inner">
+        <a class="brand footer-brand" href="#top"><span class="brand-name">أطلقها<span>.</span></span></a>
+        <p>دليل عملي مفتوح لمساعدة صانعي المنتجات العرب على الانتقال من الفكرة إلى أول مستخدم.</p>
+        <a class="back-top" href="#top">العودة للأعلى <span aria-hidden="true">↑</span></a>
+      </div>
+    </footer>
+
+    <div class="sr-only" id="resetStatus" role="status" aria-live="polite"></div>
+    <script src="script.js" defer></script>
   </body>
 </html>
